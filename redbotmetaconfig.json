@@ -10,7 +10,8 @@
         "SettingMappings": {
           "token": "token",
           "prefix": "prefix",
-          "owner": "owner"
+          "owner": "owner",
+          "env": "env"
         }
       }
     ]
