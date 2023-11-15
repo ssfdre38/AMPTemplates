@@ -24,5 +24,18 @@
     "IncludeInCommandLine": false,
     "DefaultValue": "!",
     "Placeholder": "!"
+  },
+  {
+    "DisplayName": "Bot Owner ID",
+    "Category": "Bot Settings",
+    "Description": "This is where you put your Discord ID. This is used for the bot owner commands.",
+    "Keywords": "owner",
+    "FieldName": "owner",
+    "InputType": "text",
+    "IsFlagArgument": false,
+    "ParamFieldName": "prefix",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "",
+    "Placeholder": "1234567890"
   }
 ]

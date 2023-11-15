@@ -1,9 +1,9 @@
 {
 	"id": "ec280171-c67b-4cf8-923f-dc27fea91ee1",
-	"authors": ["CubeCoders Limited", "AMP Community"],
-	"origin": "https://github.com/CubeCoders/AMPTemplates.git",
-	"url": "https://github.com/CubeCoders/AMPTemplates",
+	"authors": ["ssfdre38"],
+	"origin": "https://github.com/ssfdre38/AMPTemplates.git",
+	"url": "https://github.com/ssfdre38/AMPTemplates/tree/dev",
 	"imagefile": "",
-	"prefix": "",
+	"prefix": "ssfdre38",
 	"repotype": "AppTemplates"
 }

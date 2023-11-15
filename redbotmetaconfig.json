@@ -9,7 +9,8 @@
         "Heading": "$root",
         "SettingMappings": {
           "token": "token",
-          "prefix": "prefix"
+          "prefix": "prefix",
+          "owner": "owner"
         }
       }
     ]
