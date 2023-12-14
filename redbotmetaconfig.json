@@ -1,6 +1,6 @@
 [
   {
-    "ConfigFile": "Red-DiscordBot/redbot/settings.json",
+    "ConfigFile": "./settings.json",
     "AutoMap": false,
     "ConfigType": "kvp",
     "ConfigFormat": "{0} = '{1}'",
