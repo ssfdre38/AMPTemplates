@@ -11,7 +11,7 @@
           "token": "token",
           "prefix": "prefix",
           "owner": "owner",
-          "co-owner": "co-owner"
+          "co-owner": "owner1"
         }
       }
     ]
