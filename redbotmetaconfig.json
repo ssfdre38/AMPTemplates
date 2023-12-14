@@ -10,7 +10,8 @@
         "SettingMappings": {
           "token": "token",
           "prefix": "prefix",
-          "owner": "owner"
+          "owner": "owner",
+          "co-owner": "co-owner"
         }
       }
     ]
