@@ -1,0 +1,123 @@
+[
+    {
+        "UpdateStageName": "Install Dependencies",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c 'apt-get update && apt-get install -y x11vnc xvfb libxcursor1 ca-certificates curl bzip2 libnss3 libegl1-mesa x11-xkb-utils libasound2 libpci3 libxslt1.1 libxkbcommon0 libxss1 libxcomposite1 && update-ca-certificates'",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": false,
+        "DeleteAfterExtract": true,
+        "OneShot": false
+    },
+    {
+        "UpdateStageName": "Create Directories",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c 'mkdir -p {{$FullBaseDir}}TeamSpeak3-Client-linux_amd64/plugins && mkdir {{$FullBaseDir}}yt-dlp'",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": false,
+        "DeleteAfterExtract": true,
+        "OneShot": false
+    },
+    {
+        "UpdateStageName": "Download Sinusbot",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://www.sinusbot.com/dl/sinusbot.current.tar.bz2",
+        "UnzipUpdateSource": true,
+        "OverwriteExistingFiles": false,
+        "DeleteAfterExtract": true,
+        "OneShot": false
+    },
+	{
+        "UpdateStageName": "Download TeamSpeak 3 Client",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "FetchURLFromJQ",
+        "UpdateSourceData": "https://teamspeak.com/versions/client.json",
+        "UpdateSourceArgs": "$['linux']['x86_64']['mirrors']['teamspeak.com']",
+		"UpdateSourceTarget": "serverfiles",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": true,
+        "DeleteAfterExtract": false,
+        "OneShot": false
+    },
+    {
+        "UpdateStageName": "Download Youtube-DLP",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp",
+        "UpdateSourceTarget": "serverfiles/yt-dlp",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": false,
+        "DeleteAfterExtract": false,
+        "OneShot": false
+    },
+    {
+        "UpdateStageName": "Install TeamSpeak 3 Client",
+        "UpdateSourcePlatform": "Linux",
+		"UpdateSource": "Executable",
+		"UpdateSourceData": "/bin/bash",
+		"UpdateSourceArgs": "-c 'chmod 0755 {{$FullBaseDir}}TeamSpeak3-Client-linux_amd64-*.run && shopt -s nullglob && for file in {{$FullBaseDir}}TeamSpeak3-Client-linux_amd64-*.run; do $file --tar xfv -C {{$FullBaseDir}}TeamSpeak3-Client-linux_amd64; done'",
+		"UnzipUpdateSource": false,
+		"OverwriteExistingFiles": false,
+		"DeleteAfterExtract": true,
+		"OneShot": false
+    },
+    {
+        "UpdateStageName": "Remove TeamSpeak 3 Installer",
+        "UpdateSourcePlatform": "Linux",
+		"UpdateSource": "Executable",
+		"UpdateSourceData": "/bin/bash",
+		"UpdateSourceArgs": "-c 'rm {{$FullBaseDir}}TeamSpeak3-Client-linux_amd64-*.run && rm {{$FullBaseDir}}TeamSpeak3-Client-linux_amd64/xcbglintegrations/libqxcb-glx-integration.so'",
+		"UnzipUpdateSource": false,
+		"OverwriteExistingFiles": false,
+		"DeleteAfterExtract": true,
+		"OneShot": false
+    },
+    {
+        "UpdateStageName": "Install TeamSpeak 3 Plugin",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c 'cp {{$FullBaseDir}}plugin/libsoundbot_plugin.so {{$FullBaseDir}}TeamSpeak3-Client-linux_amd64/plugins'",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": false,
+        "DeleteAfterExtract": true,
+        "OneShot": false
+    },
+    {
+        "UpdateStageName": "Create Config",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c 'cp {{$FullBaseDir}}config.ini.dist {{$FullBaseDir}}config.ini'",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": false,
+        "DeleteAfterExtract": true,
+        "OneShot": false
+    },
+    {
+        "UpdateStageName": "Edit Config",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c 'sed -i '\\''s|^TS3Path.*|TS3Path = \\\"{{$FullBaseDir}}TeamSpeak3-Client-linux_amd64/ts3client_linux_amd64\\\"|g; s|^YoutubeDLPath.*|YoutubeDLPath = \\\"{{$FullBaseDir}}yt-dlp/yt-dlp\\\"|g'\\'' {{$FullBaseDir}}config.ini'",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": false,
+        "DeleteAfterExtract": true,
+        "OneShot": false
+    },
+    {
+        "UpdateStageName": "Final Steps",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c 'chmod +x {{$FullBaseDir}}sinusbot && chmod a+rx {{$FullBaseDir}}yt-dlp/yt-dlp'",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": false,
+        "DeleteAfterExtract": true,
+        "OneShot": false
+    }
+]
