@@ -41,7 +41,7 @@
   {
     "DisplayName": "Bot Co-Owner ID",
     "Category": "Bot Settings",
-    "Description": "This is where you put your Discord ID. This is used for the bot co-owner commands.",
+    "Description": "This is where you put your Discord ID. This is used for the bot co-owner commands. Remember to seperate each ID with a comma. Example: 1234567890, 0987654321. If you don't have a co-owner, Use the same ID as the owner.",
     "Keywords": "owner1",
     "FieldName": "owner1",
     "InputType": "text",
