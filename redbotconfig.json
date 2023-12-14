@@ -37,18 +37,18 @@
     "IncludeInCommandLine": false,
     "DefaultValue": "",
     "Placeholder": "1234567890"
-  },
-  {
-    "DisplayName": "Bot Co-Owner ID",
-    "Category": "Bot Settings",
-    "Description": "This is where you put your Discord ID. This is used for the bot owner and co-owner commands commands.",
-    "Keywords": "co-owner",
-    "FieldName": "co-owner",
-    "InputType": "text",
-    "IsFlagArgument": false,
-    "ParamFieldName": "prefix",
-    "IncludeInCommandLine": false,
-    "DefaultValue": "",
-    "Placeholder": "1234567890"
   }
+ // {
+  //  "DisplayName": "Bot Co-Owner ID",
+  //  "Category": "Bot Settings",
+  //  "Description": "This is where you put your Discord ID. This is used for the bot owner and co-owner commands commands.",
+  //  "Keywords": "co-owner",
+  //  "FieldName": "co-owner",
+  //  "InputType": "text",
+  //  "IsFlagArgument": false,
+  //  "ParamFieldName": "prefix",
+  //  "IncludeInCommandLine": false,
+  //  "DefaultValue": "",
+  //  "Placeholder": "1234567890"
+  // }
 ]
