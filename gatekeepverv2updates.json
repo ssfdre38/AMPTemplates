@@ -20,6 +20,6 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"source '{{$FullRootDir}}venv/bin/activate' && python3.12 -m pip install --upgrade pip && python3.12 -m pip install numpy requests  wheel && git clone https://github.com/Rapptz/discord.py && cd discord.py && python3.12 -m pip install discord.py\""
+    "UpdateSourceArgs": "-c \"source '{{$FullRootDir}}venv/bin/activate' && python3.12 -m pip install --upgrade pip && python3.12 -m pip install numpy requests  wheel setuptools && git clone https://github.com/Rapptz/discord.py && cd discord.py && python3.12 -m pip install discord.py\""
   }
 ]
