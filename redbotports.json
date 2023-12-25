@@ -1,0 +1,9 @@
+[
+    {
+        "Protocol": "TCP",
+        "Port": "2333",
+        "Name": "Audio Port",
+        "Description": "Port used for Audio Cog",
+        "Ref": "AudioPort"
+    }
+]
