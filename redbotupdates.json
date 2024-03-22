@@ -22,4 +22,4 @@
 	"UpdateSourceData": "/bin/bash",
 	"UpdateSourceArgs": "-c \"source '{{$FullRootDir}}redenv/bin/activate' && redbot-setup --no-prompt --instance-name env --overwrite-existing-instance --data-path {{$FullRootDir}}redbot --backend json\""
 }
-	  ]
+]
