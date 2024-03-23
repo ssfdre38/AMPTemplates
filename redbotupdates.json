@@ -5,7 +5,7 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"rm -rf '{{$FullRootDir}}venv' && /usr/bin/python3 -m venv '{{$FullRootDir}}redenv'\""
+    "UpdateSourceArgs": "-c \"rm -rf '{{$FullBaseDir}}venv' && /usr/bin/python3 -m venv '{{$FullBaseDir}}redenv'\""
   },
 
   {
@@ -13,7 +13,7 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"source  '{{$FullRootDir}}redenv/bin/activate' && python3 -m pip install --upgrade pip && python3 -m pip install -U pip wheel && python3 -m pip install -U --force-reinstall --no-cache-dir Red-DiscordBot\""
+    "UpdateSourceArgs": "-c \"source  '{{$FullBaseDir}}redenv/bin/activate' && python3 -m pip install --upgrade pip && python3 -m pip install -U pip wheel && python3 -m pip install -U --force-reinstall --no-cache-dir Red-DiscordBot\""
   },
 
   {
@@ -21,6 +21,6 @@
 	"UpdateSourcePlatform": "Linux",
 	"UpdateSource": "Executable",
 	"UpdateSourceData": "/bin/bash",
-	"UpdateSourceArgs": "-c \"source  '{{$FullRootDir}}redenv/bin/activate' && redbot-setup --no-prompt --instance-name env --overwrite-existing-instance --data-path {{$FullRootDir}}bot --backend json\""
+	"UpdateSourceArgs": "-c \"source  '{{$FullBaseDir}}redenv/bin/activate' && redbot-setup --no-prompt --instance-name env --overwrite-existing-instance --data-path {{$FullBaseDir}}bot --backend json\""
   }
 ]
