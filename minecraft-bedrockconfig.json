@@ -1,7 +1,7 @@
 [
     {
         "DisplayName":"Server Name",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"1",
         "Description":"Sets the name of the server that is shown in the in-game server list. No semi-colons allowed",
@@ -14,7 +14,7 @@
     },
     {
         "DisplayName":"Game Mode",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"2",
         "Description":"Sets the game mode for new players",
@@ -31,7 +31,7 @@
     },
     {
         "DisplayName":"Force Game Mode",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"3",
         "Description":"If set, the server will send game mode values to clients other than the one saved during world creation, if those values are set in 'server.properties' after world creation",
@@ -47,7 +47,7 @@
     },
     {
         "DisplayName":"Level Name",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"World Settings:public:2",
                 "Order":"1",
         "Description":"Sets the name of the level (world) to load, or create if it does not exist. No semi-colons allowed, nor any symbols that are illegal for file names. Levels are stored in the 'worlds' directory",
@@ -61,7 +61,7 @@
     },
     {
         "DisplayName":"Level Seed",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"World Settings:public:2",
                 "Order":"2",
         "Description":"Sets the seed to randomise the generation of a new world. Blank = random seed",
@@ -74,7 +74,7 @@
     },
     {
         "DisplayName":"Difficulty Level",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"World Settings:public:2",
                 "Order":"3",
         "Description":"Sets the difficulty level of the world",
@@ -92,7 +92,7 @@
     },
     {
         "DisplayName":"Allow Cheats",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"World Settings:public:2",
                 "Order":"4",
         "Description":"If set, cheats like commands can be used",
@@ -108,7 +108,7 @@
     },
     {
         "DisplayName":"Player Limit",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"4",
         "Description":"Sets the maximum number of players allowed on the server at one time",
@@ -124,7 +124,7 @@
     },
     {
         "DisplayName":"Enable Online Mode",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"5",
         "Description":"If set, all connected players must be authenticated to Xbox Live. Remote clients must always be authenticated, even if this setting is disabled",
@@ -140,7 +140,7 @@
     },
     {
         "DisplayName":"Enable Allow List",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"6",
         "Description":"If set, all connected players must be listed in 'allowlist.json'",
@@ -156,7 +156,7 @@
     },
     {
         "DisplayName":"View Distance",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"World Settings:public:2",
                 "Order":"5",
         "Description":"Sets the maximum allowed view distance. Higher values have performance impact",
@@ -172,7 +172,7 @@
     },
     {
         "DisplayName":"Tick Distance",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"World Settings:public:2",
                 "Order":"6",
         "Description":"Sets the distance from any player that the world will be ticked. Higher values have performance impact",
@@ -189,7 +189,7 @@
     },
     {
         "DisplayName":"Idle Player Timeout",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Player Settings:group:3",
                 "Order":"1",
         "Description":"Sets the time after which a player will be kicked if idling. 0 = disabled",
@@ -205,7 +205,7 @@
     },
     {
         "DisplayName":"Default Player Permission Level",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Player Settings:group:3",
                 "Order":"2",
         "Description":"Sets the permission level for new players joining the server for the first time",
@@ -222,7 +222,7 @@
     },
     {
         "DisplayName":"Require Texture Packs",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"7",
         "Description":"If set, clients must use texture packs in the current world",
@@ -238,7 +238,7 @@
     },
     {
         "DisplayName":"Chat Restriction Level",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"8",
         "Description":"Sets the level of restriction applied to the chat for each player that joins the server",
@@ -255,7 +255,7 @@
     },
     {
         "DisplayName":"Ignore Player Interaction",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Player Settings:group:3",
                 "Order":"3",
         "Description":"If set, the server will inform clients to ignore other players when interacting with the world",
@@ -271,7 +271,7 @@
     },
     {
         "DisplayName":"Enable Client Chunk Generation",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"World Settings:public:2",
                 "Order":"7",
         "Description":"If set, the server will inform clients that they have the ability to generate visual level chunks outside of player interaction distances",
@@ -287,7 +287,7 @@
     },
     {
         "DisplayName":"Server Build Radius Ratio",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"World Settings:public:2",
                 "Order":"8",
         "Description":"Sets how much of the player's view the server will generate, disregarding client hardware capability. Allowed values = Disabled or any value in range 0.0 - 1.0. Client Chunk Generation must be enabled",
@@ -301,7 +301,7 @@
     },
     {
         "DisplayName":"Disable Custom Skins",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Player Settings:group:3",
                 "Order":"4",
         "Description":"If set, custom skins that were customised outside of the Minecraft store assets or in game assets will not be allowed",
@@ -317,7 +317,7 @@
     },
     {
         "DisplayName":"Maximum CPU Threads",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"9",
         "Description":"Sets the maximum number of CPU threads the server will try to use. 0 = use as many as possible",
@@ -333,7 +333,7 @@
     },
     {
         "DisplayName":"Enable Content Errors Logging",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"10",
         "Description":"If set, logging content errors to a file will be enabled",
@@ -349,7 +349,7 @@
     },
     {
         "DisplayName":"Compression Threshold",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"11",
         "Description":"Sets the smallest size of raw network payload to compress",
@@ -365,7 +365,7 @@
     },
     {
         "DisplayName":"Compression Algorithm",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"12",
         "Description":"Sets the compression algorithm to use for networking",
@@ -381,7 +381,7 @@
     },
     {
         "DisplayName":"Server Movement Authority",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"13",
         "Description":"Sets the server authority on movement",
@@ -398,7 +398,7 @@
     },
     {
         "DisplayName":"Player Position Tolerance Threshold",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Player Settings:group:3",
                 "Order":"5",
         "Description":"Sets the tolerance of discrepancies between the client and server player position, if the third option is selected under Server Movement Authority",
@@ -413,7 +413,7 @@
     },
     {
         "DisplayName":"Player Attack/Look Direction Tolerance Threshold",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Player Settings:group:3",
                 "Order":"6",
         "Description":"Specifies the amount that the player's attack direction and look direction can differ",
@@ -429,7 +429,7 @@
     },
     {
         "DisplayName":"Enable Server Authority Block Breaking",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"14",
         "Description":"If set, the server will compute block mining operations in sync with the client",
@@ -445,7 +445,7 @@
     },
     {
         "DisplayName":"Server Authority Block Breaking Pick Range Scalar",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"15",
         "Description":"Sets the pick range scalar if Server Authority Block Breaking is enabled",
@@ -460,7 +460,7 @@
     },
     {
         "DisplayName":"Hash Block Network IDs",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"16",
         "Description":"Specifies if the server will send hashed block network ID's instead of id's that start from 0 and go up",
@@ -476,7 +476,7 @@
     },
     {
         "DisplayName":"Disable Client Caching",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"17",
         "Description":"If set, the server will inform clients to not cache game data",
@@ -492,7 +492,7 @@
     },
     {
         "DisplayName":"Allow Outbound Script Debugging",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"18",
         "Description":"If set, allows use of the script debugger 'connect' command and 'Connect' for the Script Debugger Auto-Attach Mode",
@@ -508,7 +508,7 @@
     },
     {
         "DisplayName":"Allow Inbound Script Debugging",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"19",
         "Description":"If set, allows use of the script debugger 'listen' command and 'Listen' for the Script Debugger Auto-Attach Mode",
@@ -524,7 +524,7 @@
     },
     {
         "DisplayName":"Script Debugger Auto-Attach Mode",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"20",
         "Description":"Sets the behaviour of the script debugger auto-attach feature",
@@ -541,7 +541,7 @@
     },
     {
         "DisplayName":"Script Debugger Auto-Attach Connect Address",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"21",
         "Description":"Sets the address to use when the Script Debugger Auto-Attach Mode is set to 'Connect'. Make sure to use the Debugger Port allocated to the instance",
@@ -554,7 +554,7 @@
     },
     {
         "DisplayName":"Enable Server Telemetry",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"22",
         "Description":"If set, server telemetry will be enabled, resulting in server data being sent to Microsoft",
@@ -570,7 +570,7 @@
     },
     {
         "DisplayName":"Additional Server Settings",
-        "Category":"Minecraft Server Settings:code",
+        "Category":"Minecraft Server:code",
                 "Subcategory":"Server Settings:dns:1",
                 "Order":"23",
         "Description":"Specifies additional settings to include in 'server.properties' that are not otherwise set by AMP. One setting per line. Useful for new settings in preview server builds",
