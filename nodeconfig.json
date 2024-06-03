@@ -109,7 +109,7 @@
     {
         "DisplayName":"Node.js Version",
         "Category":"Node - Settings:code",
-                "Subcategory":"Node Settings:code:1",
+                "Subcategory":"Node Settings:settings:1",
                 "Order":"1",
         "Description":"Sets the [Node.js release version](https://nodejs.org/download/release/) to install to run the application. NOTE: Specify a numbered version like v18.16.0, rather than any \"latest\" version.",
         "Keywords":"node,nodejs,version",
@@ -125,7 +125,7 @@
     {
         "DisplayName":"Disable Node.js Download",
         "Category":"Node - Settings:code",
-                "Subcategory":"Node Settings:code:1",
+                "Subcategory":"Node Settings:settings:1",
                 "Order":"4",
         "Description":"If set, Node.js will not be downloaded and installed when the server is updated. Saves on bandwidth if you don't need to change the already installed Node.js version.",
         "Keywords":"node,nodejs,download,update",
@@ -143,7 +143,7 @@
     {
         "DisplayName":"Application Name",
         "Category":"Node - Settings:code",
-                "Subcategory":"Node Settings:code:1",
+                "Subcategory":"Node Settings:settings:1",
                 "Order":"5",
         "Description":"Specify name of the Node application to execute. Do not specify \"node\" in front.",
         "Keywords":"app,application,name",
@@ -159,7 +159,7 @@
     {
         "DisplayName":"Application Installation Location",
         "Category":"Node - Settings:code",
-                "Subcategory":"Node Settings:code:1",
+                "Subcategory":"Node Settings:settings:1",
                 "Order":"6",
         "Description":"If the app downloads in a subfolder of \"app\" you must specify the folders here.",
         "Keywords":"app,application,location",
@@ -175,7 +175,7 @@
     {
         "DisplayName":"Command Line Arguments",
         "Category":"Node - Settings:code",
-                "Subcategory":"Node Settings:code:1",
+                "Subcategory":"Node Settings:settings:1",
                 "Order":"7",
         "Description":"Specify any command line arguments to include.",
         "Keywords":"command,line,arguments,args",
@@ -191,7 +191,7 @@
     {
         "DisplayName":"npm Install Type",
         "Category":"Node - Settings:code",
-                "Subcategory":"Node Settings:code:1",
+                "Subcategory":"Node Settings:settings:1",
                 "Order":"2",
         "Description":"Specify \"npm i\" to use a packages.json or specify \"npm ci\" to use a packages-lock.json. If \"Specific Packages\" is chosen you must enter the packages in the \"Specific npm Packages\" input.",
         "Keywords":"npm,install,type",
@@ -211,7 +211,7 @@
     {
         "DisplayName":"Specific npm Packages",
         "Category":"Node - Settings:code",
-                "Subcategory":"Node Settings:code:1",
+                "Subcategory":"Node Settings:settings:1",
                 "Order":"3",
         "Description":"Specify any additional npm packages to install separated by a space. Select \"Specific Packages\" for the \"npm Install Type\".",
         "Keywords":"additional,npm,packages",
