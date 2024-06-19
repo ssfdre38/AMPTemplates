@@ -4,7 +4,7 @@
     "AutoMap": false,
     "ConfigType": "kvp",
     "ConfigFormat": "{0} = '{1}'",
-    "Importable": true,
+    "Importable": "true",
     "Subsections": [
       {
         "Heading": "$root",
