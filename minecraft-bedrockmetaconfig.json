@@ -50,7 +50,7 @@
                 }
             }
         ]
-    }
+    },
     {
         "ConfigFile":"server.properties",
         "ConfigType":"kvp",
