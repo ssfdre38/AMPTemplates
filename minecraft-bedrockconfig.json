@@ -586,7 +586,7 @@
     {
         "DisplayName":"Server Version",
         "Category":"Minecraft Server:code",
-                "Subcategory":"Version:code:4",
+                "Subcategory":"Server Version:code:4",
                 "Order":"1",
         "Description":"Sets the server version to install. If a \"specific version\" is selected, the version must be set under Specific Server Version Identifier. Update the server after changing this setting",
         "Keywords":"server,version,release,stream,preview",
@@ -604,7 +604,7 @@
     {
         "DisplayName":"Specific Server Version Identifier",
         "Category":"Minecraft Server:code",
-                "Subcategory":"Version:code:4",
+                "Subcategory":"Server Version:code:4",
                 "Order":"2",
         "Description":"Sets the version identifier for a specific Bedrock version to install, if a \"specific version\" is selected under Server Version. Must be the full four number identifier as appropriate to the build stream. Update the server after changing this setting",
         "Keywords":"server,specific,version",
