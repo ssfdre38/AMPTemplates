@@ -18,38 +18,6 @@
         "UpdateSourceArgs": "{{$FullBaseDir}}log"
     },
     {
-        "UpdateStageName": "Gitea Download",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd gitea && latestVersion=$(wget -qO- https://dl.gitea.com/gitea/version.json | jq -r \\\".latest.version\\\"); wget -qO gitea https://dl.gitea.com/gitea/${latestVersion}/gitea-${latestVersion}-linux-amd64 && echo \\\"Gitea v${latestVersion} installed\\\"\"",
-        "UpdateSourceArch": "x86_64",
-        "UpdateSourceConditionSetting": "ServerStream",
-        "UpdateSourceConditionValue": "latest",
-        "SkipOnFailure": false
-    },
-    {
-        "UpdateStageName": "Gitea Download",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd gitea && latestVersion=$(wget -qO- https://dl.gitea.com/gitea/version.json | jq -r \\\".latest.version\\\"); wget -qO gitea https://dl.gitea.com/gitea/${latestVersion}/gitea-${latestVersion}-linux-arm64 && echo \\\"Gitea v${latestVersion} installed\\\"\"",
-        "UpdateSourceArch": "aarch64",
-        "UpdateSourceConditionSetting": "ServerStream",
-        "UpdateSourceConditionValue": "latest",
-        "SkipOnFailure": false
-    },
-    {
-        "UpdateStageName": "Server Download",
-        "UpdateSourcePlatform": "Windows",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'gitea'; $latestVersion=((Invoke-WebRequest -UseBasicParsing -Uri 'https://dl.gitea.com/gitea/version.json').Content | ConvertFrom-Json).latest.version; Invoke-WebRequest -UseBasicParsing -Uri \\\"https://dl.gitea.com/gitea/${latestVersion}/gitea-${latestVersion}-windows-4.0-amd64.exe\\\" -OutFile 'gitea.exe'; if ($?) { Write-Output \\\"Gitea v${latestVersion} installed\\\" }\"",
-        "UpdateSourceConditionSetting": "ServerStream",
-        "UpdateSourceConditionValue": "latest",
-        "SkipOnFailure": false
-    },
-    {
         "UpdateStageName": "Code-Serve Download",
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "FetchURL",
