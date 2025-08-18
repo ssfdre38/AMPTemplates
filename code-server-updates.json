@@ -91,7 +91,7 @@
         "UpdateStageName": "Make Server Executable",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "SetExecutableFlag",
-        "UpdateSourceArgs": "{{$FullBaseDir}}gitea"
+        "UpdateSourceArgs": "{{$FullBaseDir}}code-serve"
     },
     {
         "UpdateStageName": "Create App.ini File",

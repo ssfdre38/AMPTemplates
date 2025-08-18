@@ -1,0 +1,54 @@
+[
+    {
+        "DisplayName": "Additional Command Line Options",
+        "Category": "Gitea:code",
+        "Subcategory": "Server:dns:1",
+        "Description": "Specifies [additional command line options](https://docs.gitea.com/administration/command-line) that are not otherwise set by AMP. Use with care",
+        "Keywords": "custom,server,options,arguments",
+        "FieldName": "CustomServerOptions",
+        "InputType": "Textarea",
+        "ParamFieldName": "CustomServerOptions",
+        "DefaultValue": "",
+        "EnumValues": {}
+    },
+    {
+        "DisplayName": "Custom App.ini Settings",
+        "Category": "Gitea:code",
+        "Subcategory": "Server:dns:1",
+        "Description": "Additional [configuration settings](https://docs.gitea.com/administration/config-cheat-sheet) can be set in 'custom/conf/app.ini' to override server defaults that are not otherwise set by AMP as startup parameters",
+        "Keywords": "configuration,app,ini,file,settings",
+        "FieldName": "ConfigurationFileSettings",
+        "InputType": "hidden",
+        "ParamFieldName": "ConfigurationFileSettings",
+        "DefaultValue": "",
+        "EnumValues": {}
+    },
+    {
+        "DisplayName": "Server Version",
+        "Category": "Updates",
+        "Subcategory": "Server Updates:build:-1",
+        "Description": "Sets the server version to install. If \"Specific version\" is selected, the version must be set under Specific Server Version Number. Update the server after changing this setting",
+        "Keywords": "server,version,latest,specific",
+        "FieldName": "ServerStream",
+        "InputType": "enum",
+        "ParamFieldName": "ServerStream",
+        "DefaultValue": "latest",
+        "EnumValues": {
+            "latest": "Latest release (default)",
+            "specificversion": "Specific version"
+        }
+    },
+    {
+        "DisplayName": "Specific Server Version Number",
+        "Category": "Updates",
+        "Subcategory": "Server Updates:build:-1",
+        "Description": "Sets the [version number](https://dl.gitea.com/gitea/) for a specific Gitea server version to install, if \"Specific version\" is selected under Server Version. Update the server after changing this setting",
+        "Keywords": "server,specific,version",
+        "FieldName": "SpecificServerVersion",
+        "InputType": "text",
+        "ParamFieldName": "SpecificServerVersion",
+        "DefaultValue": "",
+        "Placeholder": "1.22.4",
+        "EnumValues": {}
+    }
+]
