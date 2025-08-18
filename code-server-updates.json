@@ -59,7 +59,7 @@
         "UpdateStageName": "Make Server Executable",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "SetExecutableFlag",
-        "UpdateSourceArgs": "{{$FullBaseDir}}code-serve"
+        "UpdateSourceArgs": "{{$FullBaseDir}}code"
     },
     {
         "UpdateStageName": "Create App.ini File",
