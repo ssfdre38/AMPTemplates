@@ -1,0 +1,103 @@
+[
+    {
+        "UpdateStageName": "Create Config Directory",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "CreateDirectory",
+        "UpdateSourceArgs": "{{$FullBaseDir}}custom/conf"
+    },
+    {
+        "UpdateStageName": "Create Data Directory",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "CreateDirectory",
+        "UpdateSourceArgs": "{{$FullBaseDir}}data"
+    },
+    {
+        "UpdateStageName": "Create Log Directory",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "CreateDirectory",
+        "UpdateSourceArgs": "{{$FullBaseDir}}log"
+    },
+    {
+        "UpdateStageName": "Gitea Download",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd gitea && latestVersion=$(wget -qO- https://dl.gitea.com/gitea/version.json | jq -r \\\".latest.version\\\"); wget -qO gitea https://dl.gitea.com/gitea/${latestVersion}/gitea-${latestVersion}-linux-amd64 && echo \\\"Gitea v${latestVersion} installed\\\"\"",
+        "UpdateSourceArch": "x86_64",
+        "UpdateSourceConditionSetting": "ServerStream",
+        "UpdateSourceConditionValue": "latest",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Gitea Download",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd gitea && latestVersion=$(wget -qO- https://dl.gitea.com/gitea/version.json | jq -r \\\".latest.version\\\"); wget -qO gitea https://dl.gitea.com/gitea/${latestVersion}/gitea-${latestVersion}-linux-arm64 && echo \\\"Gitea v${latestVersion} installed\\\"\"",
+        "UpdateSourceArch": "aarch64",
+        "UpdateSourceConditionSetting": "ServerStream",
+        "UpdateSourceConditionValue": "latest",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Server Download",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "powershell.exe",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'gitea'; $latestVersion=((Invoke-WebRequest -UseBasicParsing -Uri 'https://dl.gitea.com/gitea/version.json').Content | ConvertFrom-Json).latest.version; Invoke-WebRequest -UseBasicParsing -Uri \\\"https://dl.gitea.com/gitea/${latestVersion}/gitea-${latestVersion}-windows-4.0-amd64.exe\\\" -OutFile 'gitea.exe'; if ($?) { Write-Output \\\"Gitea v${latestVersion} installed\\\" }\"",
+        "UpdateSourceConditionSetting": "ServerStream",
+        "UpdateSourceConditionValue": "latest",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Code-Serve Download",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://code.visualstudio.com/sha/download?build=stable&os=cli-win32-x64",
+        "UpdateSourceTarget": "{{$FullBaseDir}}",
+        "UpdateSourceArgs": "code.exe",
+        "OverwriteExistingFiles": true,
+        "UpdateSourceConditionSetting": "ServerStream",
+        "UpdateSourceConditionValue": "specificversion",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Code-Serve Download",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64",
+        "UpdateSourceTarget": "{{$FullBaseDir}}",
+        "UpdateSourceArgs": "code",
+        "UpdateSourceArch": "x86_64",
+        "OverwriteExistingFiles": true,
+        "UpdateSourceConditionSetting": "ServerStream",
+        "UpdateSourceConditionValue": "specificversion",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Code-Serve Download",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-arm64",
+        "UpdateSourceTarget": "{{$FullBaseDir}}",
+        "UpdateSourceArgs": "code",
+        "UpdateSourceArch": "aarch64",
+        "OverwriteExistingFiles": true,
+        "UpdateSourceConditionSetting": "ServerStream",
+        "UpdateSourceConditionValue": "specificversion",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Make Server Executable",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "SetExecutableFlag",
+        "UpdateSourceArgs": "{{$FullBaseDir}}gitea"
+    },
+    {
+        "UpdateStageName": "Create App.ini File",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "CreateFile",
+        "UpdateSourceArgs": "{{$FullBaseDir}}custom/conf/app.ini",
+        "OverwriteExistingFiles": false
+    }
+]
