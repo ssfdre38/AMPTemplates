@@ -23,10 +23,17 @@
         "UpdateSource": "FetchURL",
         "UpdateSourceData": "https://code.visualstudio.com/sha/download?build=stable&os=cli-win32-x64",
         "UpdateSourceTarget": "{{$FullBaseDir}}",
-        "UpdateSourceArgs": "code.exe",
+        "UpdateSourceArgs": "vscode_cli_win32_x64_cli.zip",
         "OverwriteExistingFiles": true,
         "UpdateSourceConditionSetting": "ServerStream",
         "UpdateSourceConditionValue": "specificversion",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Unzip Code-Serve (Windows)",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "RunCommand",
+        "UpdateSourceArgs": "powershell -Command \"Expand-Archive -Path '{{$FullBaseDir}}vscode_cli_win32_x64_cli.zip' -DestinationPath '{{$FullBaseDir}}' -Force\"",
         "SkipOnFailure": false
     },
     {
@@ -35,11 +42,19 @@
         "UpdateSource": "FetchURL",
         "UpdateSourceData": "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64",
         "UpdateSourceTarget": "{{$FullBaseDir}}",
-        "UpdateSourceArgs": "code",
+        "UpdateSourceArgs": "vscode_cli_alpine_x64_cli.tar.gz",
         "UpdateSourceArch": "x86_64",
         "OverwriteExistingFiles": true,
         "UpdateSourceConditionSetting": "ServerStream",
         "UpdateSourceConditionValue": "specificversion",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Untar Code-Serve (Linux x86_64)",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSourceArch": "x86_64",
+        "UpdateSource": "RunCommand",
+        "UpdateSourceArgs": "tar -xzf {{$FullBaseDir}}vscode_cli_alpine_x64_cli.tar.gz -C {{$FullBaseDir}}",
         "SkipOnFailure": false
     },
     {
@@ -48,11 +63,19 @@
         "UpdateSource": "FetchURL",
         "UpdateSourceData": "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-arm64",
         "UpdateSourceTarget": "{{$FullBaseDir}}",
-        "UpdateSourceArgs": "code",
+        "UpdateSourceArgs": "vscode_cli_alpine_arm64_cli.tar.gz",
         "UpdateSourceArch": "aarch64",
         "OverwriteExistingFiles": true,
         "UpdateSourceConditionSetting": "ServerStream",
         "UpdateSourceConditionValue": "specificversion",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Untar Code-Serve (Linux aarch64)",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSourceArch": "aarch64",
+        "UpdateSource": "RunCommand",
+        "UpdateSourceArgs": "tar -xzf {{$FullBaseDir}}vscode_cli_alpine_arm64_cli.tar.gz -C {{$FullBaseDir}}",
         "SkipOnFailure": false
     },
     {
