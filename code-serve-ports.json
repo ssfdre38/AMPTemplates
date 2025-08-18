@@ -1,0 +1,9 @@
+[
+    {
+        "Protocol": "TCP",
+        "Port": 8000,
+        "Name": "Server Port",
+        "Description": "Port for server web traffic",
+        "Ref": "ServerPort"
+    }
+]
