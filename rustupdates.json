@@ -110,29 +110,23 @@
     },
     {
         "UpdateStageName": "Carbon Download",
-        "UpdateSourcePlatform": "Windows",
-        "UpdateSource": "GithubRelease",
-        "UpdateSourceArgs": "CarbonCommunity/Carbon",
-        "UpdateSourceData": "Carbon.Windows.Release.zip",
-        "UpdateSourceTarget": "{{$FullBaseDir}}",
-        "UnzipUpdateSource": true,
-        "OverwriteExistingFiles": true,
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"CarbonBuild=\\\"{{CarbonBuild}}\\\"; cd rust/258550; case $CarbonBuild in production_build) CarbonDownload=\\\"Carbon.Linux.Release.tar.gz\\\";; *) CarbonDownload=\\\"Carbon.Linux.Debug.tar.gz\\\";; esac && wget -qO carbon.tar.gz https://github.com/CarbonCommunity/Carbon/releases/download/$CarbonBuild/$CarbonDownload && tar -xzf carbon.tar.gz >/dev/null 2>&1 && rm -f carbon.tar.gz >/dev/null 2>&1\"",
         "UpdateSourceConditionSetting": "ModLoader",
         "UpdateSourceConditionValue": "carbon",
-        "DeleteAfterExtract": true
+        "SkipOnFailure": true
     },
     {
         "UpdateStageName": "Carbon Download",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "GithubRelease",
-        "UpdateSourceArgs": "CarbonCommunity/Carbon",
-        "UpdateSourceData": "Carbon.Linux.Release.tar.gz",
-        "UpdateSourceTarget": "{{$FullBaseDir}}",
-        "UnzipUpdateSource": true,
-        "OverwriteExistingFiles": true,
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "powershell.exe",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $CarbonBuild='{{CarbonBuild}}'; Set-Location -Path 'rust/258550'; $CarbonDownload = switch ($CarbonBuild) { 'production_build' { 'Carbon.Windows.Release.zip' } default { 'Carbon.Windows.Debug.zip' } }; Invoke-WebRequest -UseBasicParsing -Uri https://github.com/CarbonCommunity/Carbon/releases/download/$CarbonBuild/$CarbonDownload -OutFile 'carbon.zip'; if ($?) { Expand-Archive -Path \\\"carbon.zip\\\" -DestinationPath \\\".\\\" -Force *> $null; if (Test-Path carbon.zip) { Remove-Item carbon.zip -Force -ErrorAction SilentlyContinue *> $null } }\"",
         "UpdateSourceConditionSetting": "ModLoader",
         "UpdateSourceConditionValue": "carbon",
-        "DeleteAfterExtract": true
+        "SkipOnFailure": true
     },
     {
         "UpdateStageName": "uMod Download",
@@ -145,7 +139,8 @@
         "OverwriteExistingFiles": true,
         "UpdateSourceConditionSetting": "ModLoader",
         "UpdateSourceConditionValue": "umod",
-        "DeleteAfterExtract": true
+        "DeleteAfterExtract": true,
+        "SkipOnFailure": true
     },
     {
         "UpdateStageName": "uMod Download",
@@ -158,6 +153,7 @@
         "OverwriteExistingFiles": true,
         "UpdateSourceConditionSetting": "ModLoader",
         "UpdateSourceConditionValue": "umod",
-        "DeleteAfterExtract": true
+        "DeleteAfterExtract": true,
+        "SkipOnFailure": true
     }
 ]

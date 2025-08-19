@@ -249,7 +249,7 @@
         "DisplayName": "Server Admins",
         "Category": "Rust:stadia_controller",
         "Subcategory": "Server:dns:1",
-        "Description": "Specifies the [Steam64 IDs](https://www.steamidfinder.com/) of server admins (either ownerid or moderatorid) to include in \"users.cfg\". One entry per line. Admins can execute all Rust commands in-game. Format: ownerid|moderatorid \"Steam64 ID\" \"optional name\" \"optional reason\"",
+        "Description": "Specifies the [Steam64 IDs](https://www.steamidfinder.com/) of server admins (either ownerid or moderatorid) to include in 'users.cfg'. One entry per line. Admins can execute all Rust commands in-game. Format: ownerid|moderatorid \"Steam64 ID\" \"optional name\" \"optional reason\"",
         "Keywords": "admin,ownerid,moderatorid",
         "FieldName": "Admins",
         "InputType": "Textarea",
@@ -320,7 +320,7 @@
         "DisplayName": "Rust Plus App Public IP",
         "Category": "Rust:stadia_controller",
         "Subcategory": "Server:dns:1",
-        "Description": "Sets the public IP advertised for the Rust+ app, if \"Manual\" is selected as the Rust Plus App Public IP Selection Mode. Useful if the host network has multiple public IPs, or the server is behind a public proxy",
+        "Description": "Sets the public IP advertised for the Rust+ app, if 'Manual' is selected as the Rust Plus App Public IP Selection Mode. Useful if the host network has multiple public IPs, or the server is behind a public proxy",
         "Keywords": "manual,public,ip,publicip,rust,plus,app",
         "FieldName": "ManualPublicIP",
         "InputType": "text",
@@ -363,7 +363,7 @@
         "DisplayName": "Additional Command Line Parameters",
         "Category": "Rust:stadia_controller",
         "Subcategory": "Server:dns:1",
-        "Description": "Specifies additional command line parameters that are not otherwise set by AMP. ONE LINE ONLY! Use with care. Alternatively, specify the equivalent under \"Additional Server Settings\"",
+        "Description": "Specifies additional command line parameters that are not otherwise set by AMP. ONE LINE ONLY! Use with care. Alternatively, specify the equivalent under Additional Server Settings",
         "Keywords": "custom,server,arguments,variables,cvars,convars,parameters",
         "FieldName": "CustomServerArgs",
         "InputType": "Textarea",
@@ -375,7 +375,7 @@
         "DisplayName": "Additional Server Settings",
         "Category": "Rust:stadia_controller",
         "Subcategory": "Server:dns:1",
-        "Description": "Specifies additional settings to include in \"server.cfg\" that are not otherwise set by AMP. Example: time.maxdelta \"0.33\". One setting per line. To list all settings in the console, type: find .",
+        "Description": "Specifies additional settings to include in 'server.cfg' that are not otherwise set by AMP. Example: time.maxdelta \"0.33\". One setting per line. To list all settings in the console, type: find .",
         "Keywords": "additional,settings,custom",
         "FieldName": "UserSettings",
         "InputType": "Textarea",
@@ -585,7 +585,7 @@
         "Category": "Updates",
         "Subcategory": "Steam Downloads:download",
         "Description": "Sets the server branch to install. Update the server after switching branches",
-        "Keywords": "server,branch,depot",
+        "Keywords": "server,branch,depot,public,staging,release,aux01,aux02,last-month,debug",
         "FieldName": "ServerBranch",
         "InputType": "enum",
         "ParamFieldName": "ServerBranch",
@@ -593,16 +593,18 @@
         "EnumValues": {
             "public": "Public (default)",
             "staging": "Staging",
+            "release": "Release",
             "aux01": "Pre-Staging (aux01)",
             "aux02": "Up and Coming (aux02)",
-            "experimental": "Experimental"
+            "last-month": "Last Month",
+            "debug": "2021 Testing (debug)"
         }
     },
     {
         "DisplayName": "Mod Loader",
         "Category": "Updates",
         "Subcategory": "Mod Loaders:code:3",
-        "Description": "Sets the mod loader to install (if any) when the server is updated",
+        "Description": "Sets the mod loader to install (if any) when the server is updated. If 'Carbon' is selected, set the Carbon Build accordingly",
         "Keywords": "install,carbon,umod,oxide,mod,modloader",
         "FieldName": "ModLoader",
         "InputType": "enum",
@@ -612,6 +614,28 @@
             "none": "None (default)",
             "carbon": "Carbon",
             "umod": "uMod/Oxide"
+        }
+    },
+    {
+        "DisplayName": "Carbon Build",
+        "Category": "Updates",
+        "Subcategory": "Mod Loaders:code:3",
+        "Description": "Sets the [Carbon build](https://github.com/CarbonCommunity/Carbon/releases) to install, if 'Carbon' is selected under Mod Loader. Update the server after switching builds",
+        "Keywords": "carbon,modloader,branch,build,release,production,staging,beta,edge,preview,qa,aux01,aux02,aux03",
+        "FieldName": "CarbonBuild",
+        "InputType": "enum",
+        "ParamFieldName": "CarbonBuild",
+        "DefaultValue": "production_build",
+        "EnumValues": {
+            "production_build": "Release/production (default)",
+            "edge_build": "Edge",
+            "preview_build": "Preview",
+            "qa_build": "QA",
+            "rustbeta_release_build": "Beta",
+            "rustbeta_staging_build": "Staging",
+            "rustbeta_aux01_build": "Aux01",
+            "rustbeta_aux02_build": "Aux02",
+            "rustbeta_aux03_build": "Aux03"
         }
     }
 ]
