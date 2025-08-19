@@ -1,23 +1,5 @@
 [
     {
-        "UpdateStageName": "Create Config Directory",
-        "UpdateSourcePlatform": "All",
-        "UpdateSource": "CreateDirectory",
-        "UpdateSourceArgs": "{{$FullBaseDir}}custom/conf"
-    },
-    {
-        "UpdateStageName": "Create Data Directory",
-        "UpdateSourcePlatform": "All",
-        "UpdateSource": "CreateDirectory",
-        "UpdateSourceArgs": "{{$FullBaseDir}}data"
-    },
-    {
-        "UpdateStageName": "Create Log Directory",
-        "UpdateSourcePlatform": "All",
-        "UpdateSource": "CreateDirectory",
-        "UpdateSourceArgs": "{{$FullBaseDir}}log"
-    },
-    {
         "UpdateStageName": "Code-Serve Download",
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "FetchURL",
@@ -83,12 +65,5 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "SetExecutableFlag",
         "UpdateSourceArgs": "{{$FullBaseDir}}code"
-    },
-    {
-        "UpdateStageName": "Create App.ini File",
-        "UpdateSourcePlatform": "All",
-        "UpdateSource": "CreateFile",
-        "UpdateSourceArgs": "{{$FullBaseDir}}custom/conf/app.ini",
-        "OverwriteExistingFiles": false
     }
 ]
