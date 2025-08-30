@@ -36,7 +36,6 @@
         "FieldName": "GSLT",
         "InputType": "password",
         "ParamFieldName": "$.LoginConfig.GSLT",
-        "SkipIfEmpty": true,
         "DefaultValue": "",
         "Placeholder": "6544F7E034119F113526E96474F559AH",
         "EnumValues": {}
