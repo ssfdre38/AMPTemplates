@@ -1,0 +1,19 @@
+[
+    {
+        "Protocol": "Both",
+        "Port": 27015,
+        "Ref": "GamePort",
+        "Name": "Game Port",
+        "Description": "Port for main game traffic",
+        "ChildPorts": [
+            {
+                "Protocol": "Both",
+                "Port": 27016,
+                "Ref": "QueryPort",
+                "Offset": 1,
+                "Name": "Query Port",
+                "Description": "Port for query traffic"
+            }
+        ]
+    }
+]
