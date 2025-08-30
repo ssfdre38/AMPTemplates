@@ -52,8 +52,6 @@
         "MinValue": "1",
         "MaxValue": "20",
         "ParamFieldName": "$.LoginConfig.ServerCapacity",
-        "IncludeInCommandLine": true,
-        "SkipIfEmpty": true,
         "DefaultValue": "8",
         "Placeholder": "8",
         "Suffix": "players",
