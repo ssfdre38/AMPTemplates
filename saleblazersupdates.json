@@ -10,6 +10,16 @@
         "SkipOnFailure": false
     },
     {
+        "UpdateStageName": "SteamCMD Component Download",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "SteamCMD",
+        "UpdateSourceData": "1007",
+        "UpdateSourceTarget": "{{$FullBaseDir}}Default",
+        "UpdateSourceArgs": "1419850",
+        "ForceDownloadPlatform": "Windows",
+        "SkipOnFailure": false
+    },
+    {
         "UpdateStageName": "DedicatedServerConfig.json Download",
         "UpdateSourcePlatform": "All",
         "UpdateSource": "FetchURL",
