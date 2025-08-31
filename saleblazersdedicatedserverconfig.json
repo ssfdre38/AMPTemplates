@@ -12,20 +12,24 @@
         "SerializedOptions": {
             "Options": [
                 {
-                    "Key": "Lobby_Name",
-                    "Value": "Dedicated Server"
-                },
-                {
                     "Key": "Lobby_Mode",
                     "Value": "2"
                 },
                 {
-                    "Key": "Lobby_Map",
+                    "Key": "Lobby_Save",
                     "Value": "0"
                 },
                 {
-                    "Key": "Lobby_Save",
-                    "Value": "0"
+                    "Key": "Lobby_Name",
+                    "Value": "Dedicated Server"
+                },
+                {
+                    "Key": "Lobby_Map",
+                    "Value": "2"
+                },
+                {
+                    "Key": "Lobby_Password",
+                    "Value": ""
                 },
                 {
                     "Key": "Lobby_SaveName",
@@ -34,6 +38,18 @@
                 {
                     "Key": "Lobby_Capacity",
                     "Value": "8"
+                },
+                {
+                    "Key": "Lobby_FriendlyFire",
+                    "Value": "False"
+                },
+                {
+                    "Key": "Lobby_PermissionsActive",
+                    "Value": "False"
+                },
+                {
+                    "Key": "Lobby_CloudCharacters",
+                    "Value": "False"
                 },
                 {
                     "Key": "Lobby_NoDeathboxDrop",
@@ -45,15 +61,15 @@
                 },
                 {
                     "Key": "Lobby_EnemyDamageMod",
-                    "Value": "1"
+                    "Value": "0.68"
                 },
                 {
                     "Key": "Lobby_PlayerDamageMod",
-                    "Value": "1"
+                    "Value": "1.6"
                 },
                 {
                     "Key": "Lobby_HitStunModifier",
-                    "Value": "2.25"
+                    "Value": "1.35"
                 },
                 {
                     "Key": "Lobby_ItemDensityMod",
@@ -65,11 +81,11 @@
                 },
                 {
                     "Key": "Lobby_TotemUnlockMod",
-                    "Value": "1"
+                    "Value": "2"
                 },
                 {
                     "Key": "Lobby_RebirthCostMod",
-                    "Value": "0.2"
+                    "Value": "15"
                 },
                 {
                     "Key": "Lobby_LocalMapDiscovery",
@@ -81,7 +97,7 @@
                 },
                 {
                     "Key": "Lobby_InvincibleShop",
-                    "Value": "False"
+                    "Value": "True"
                 },
                 {
                     "Key": "Lobby_ShopDifficulty",
@@ -129,16 +145,20 @@
                 },
                 {
                     "Key": "Lobby_ArmorDurability",
-                    "Value": "True"
+                    "Value": "False"
                 },
                 {
                     "Key": "Lobby_RandomPlayerSpawning",
-                    "Value": ""
+                    "Value": "0"
+                },
+                {
+                    "Key": "Lobby_Difficulty",
+                    "Value": "2"
                 }
             ]
         },
         "AutoSaveIntervalSeconds": 600,
-        "ServerCapacity": 8
+        "bAdvertiseServer": true
     },
     "GlobalPermissionConfig": {
         "DefaulPermissions": {
