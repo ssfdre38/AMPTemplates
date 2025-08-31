@@ -41,22 +41,6 @@
         "EnumValues": {}
     },
     {
-        "DisplayName": "Player Limit",
-        "Category": "Saleblazers:stadia_controller",
-        "Subcategory": "Server:dns:1",
-        "Description": "Sets the maximum number of players that may connect to the server at one time",
-        "Keywords": "maximum,players,limit,ServerCapacity",
-        "FieldName": "$MaxUsers",
-        "InputType": "number",
-        "MinValue": "1",
-        "MaxValue": "20",
-        "ParamFieldName": "$.LoginConfig.ServerCapacity",
-        "DefaultValue": "8",
-        "Placeholder": "8",
-        "Suffix": "players",
-        "EnumValues": {}
-    },
-    {
         "DisplayName": "Proton GE Release Version (Linux)",
         "Category": "Updates",
         "Subcategory": "Runtime Configuration:build:3",
