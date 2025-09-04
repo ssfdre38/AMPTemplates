@@ -84,19 +84,19 @@
         "SkipOnFailure": false
     },
     {
-        "UpdateStageName": "Base Server Installation",
-        "UpdateSourcePlatform": "Windows",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'dcs-world/server/DCSWorld/bin'; Rename-Item -Path 'DCS_updater.exe' -NewName 'DCS_updater_initial.exe' -Force -ErrorAction SilentlyContinue | Out-Null; Write-Host \\\"\\\"; Write-Host \\\"Installing/updating DCS World. This may take a while ...\\\"; Start-Process -FilePath 'DCS_updater_initial.exe' -ArgumentList '--quiet update' -Wait -WindowStyle Hidden; Start-Sleep -Seconds 5; Rename-Item -Path 'DCS_updater_initial.exe' -NewName 'DCS_updater.exe' -Force -ErrorAction SilentlyContinue | Out-Null\"",
-        "SkipOnFailure": false
-    },
-    {
         "UpdateStageName": "Base Server Installation Cleanup",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
         "UpdateSourceArgs": "-c \"export WINEARCH=win64 WINEDEBUG=-all; export WINEPREFIX=\\\"{{$FullRootDir}}.wine\\\"; export XDG_RUNTIME_DIR=/tmp; /usr/bin/wineboot --shutdown --force; /usr/bin/wineboot --kill --force; cd dcs-world/server/DCSWorld/bin && mv -f DCS_updater_initial.exe DCS_updater.exe\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Base Server Installation",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "powershell.exe",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'dcs-world/server/DCSWorld/bin'; Rename-Item -Path 'DCS_updater.exe' -NewName 'DCS_updater_initial.exe' -Force -ErrorAction SilentlyContinue | Out-Null; Write-Host \\\"\\\"; Write-Host \\\"Installing/updating DCS World. This may take a while ...\\\"; Start-Process -FilePath 'DCS_updater_initial.exe' -ArgumentList '--quiet update' -Wait -WindowStyle Hidden; Start-Sleep -Seconds 5; Rename-Item -Path 'DCS_updater_initial.exe' -NewName 'DCS_updater.exe' -Force -ErrorAction SilentlyContinue | Out-Null\"",
         "SkipOnFailure": false
     }
 ]
