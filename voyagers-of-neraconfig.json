@@ -55,6 +55,18 @@
         "Suffix": "seconds",
         "EnumValues": {}
     },
+     {
+        "DisplayName": "Additional Command Line Arguments",
+        "Category": "Voyagers of Nera:stadia_controller",
+        "Subcategory": "Server:dns:1",
+        "Description": "Specifies additional command line arguments (anything that begins with a - ) that are not otherwise set by AMP. Use with care",
+        "Keywords": "custom,server,arguments,parameters",
+        "FieldName": "CustomArgs",
+        "InputType": "text",
+        "ParamFieldName": "CustomArgs",
+        "DefaultValue": "",
+        "EnumValues": {}
+    },
     {
         "DisplayName": "Gathering Rate Multiplier",
         "Category": "Voyagers of Nera:stadia_controller",
