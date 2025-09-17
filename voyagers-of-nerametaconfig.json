@@ -1,6 +1,6 @@
 [
     {
-        "ConfigFile": "BoatGame/Saved/PersistedData/nera_dedicatedserver/CustomConfig/CustomHostServerUserSettings.ini",
+        "ConfigFile": "BoatGame/Saved/PersistedData/CustomConfig/CustomHostServerUserSettings.ini",
         "AutoMap": true,
         "Importable": true,
         "ConfigType": "ini",
@@ -8,7 +8,7 @@
         "ConfigFormatRegex": "^(?<key>.+?)\\s*=\\s*(?<value>.*?)$"
     },
     {
-        "ConfigFile": "BoatGame/Saved/PersistedData/nera_dedicatedserver/CustomConfig/CustomGameUserSettings.ini",
+        "ConfigFile": "BoatGame/Saved/PersistedData/CustomConfig/CustomGameUserSettings.ini",
         "AutoMap": true,
         "Importable": true,
         "ConfigType": "ini",

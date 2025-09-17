@@ -12,7 +12,7 @@
         "UpdateStageName": "Create Config Directory",
         "UpdateSourcePlatform": "All",
         "UpdateSource": "CreateDirectory",
-        "UpdateSourceArgs": "{{$FullBaseDir}}BoatGame/Saved/PersistedData/nera_dedicatedserver/CustomConfig",
+        "UpdateSourceArgs": "{{$FullBaseDir}}BoatGame/Saved/PersistedData/CustomConfig",
         "SkipOnFailure": false
     },
     {
@@ -20,7 +20,7 @@
         "UpdateSourcePlatform": "All",
         "UpdateSource": "FetchURL",
         "UpdateSourceData": "https://raw.githubusercontent.com/Greelan/AMPTemplates/dev/voyagers-of-neracustomhostserverusersettings.ini",
-        "UpdateSourceTarget": "{{$FullBaseDir}}BoatGame/Saved/PersistedData/nera_dedicatedserver/CustomConfig",
+        "UpdateSourceTarget": "{{$FullBaseDir}}BoatGame/Saved/PersistedData/CustomConfig",
         "UpdateSourceArgs": "CustomHostServerUserSettings.ini",
         "OverwriteExistingFiles": true,
         "SkipOnFailure": false
@@ -30,7 +30,7 @@
         "UpdateSourcePlatform": "All",
         "UpdateSource": "FetchURL",
         "UpdateSourceData": "https://raw.githubusercontent.com/Greelan/AMPTemplates/dev/voyagers-of-neracustomgameusersettings.ini",
-        "UpdateSourceTarget": "{{$FullBaseDir}}BoatGame/Saved/PersistedData/nera_dedicatedserver/CustomConfig",
+        "UpdateSourceTarget": "{{$FullBaseDir}}BoatGame/Saved/PersistedData/CustomConfig",
         "UpdateSourceArgs": "CustomGameUserSettings.ini",
         "OverwriteExistingFiles": true,
         "SkipOnFailure": false
