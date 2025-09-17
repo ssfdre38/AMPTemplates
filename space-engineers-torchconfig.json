@@ -119,51 +119,46 @@
         "DisplayName": "Restart On Crash",
         "Category": "Space Engineers:stadia_controller",
         "Subcategory": "Torch:mode_heat:-1",
-        "Description": "Enables automatic restart of the server if it encounters a crash.",
-        "Keywords": "Restart,Crash,Torch",
+        "Description": "",
+        "Keywords": "",
         "FieldName": "TorchConfig_RestartOnCrash",
-        "InputType": "checkbox",
+        "InputType": "text",
         "IsFlagArgument": false,
         "ParamFieldName": "/TorchConfig/RestartOnCrash",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
-        "EnumValues": {
-            "True": "true",
-            "False": "false"
-        }
+        "EnumValues": {},
+        "Hidden": true
     },
     {
         "DisplayName": "Restart On Game Update",
         "Category": "Space Engineers:stadia_controller",
         "Subcategory": "Torch:mode_heat:-1",
-        "Description": "Enables automatic restart of the server if an update to Space Engineers is detected.",
-        "Keywords": "Restart,Update,Torch,RestartOnGameUpdate",
+        "Description": "",
+        "Keywords": "",
         "FieldName": "TorchConfig_RestartOnGameUpdate",
-        "InputType": "checkbox",
+        "InputType": "text",
         "IsFlagArgument": false,
         "ParamFieldName": "/TorchConfig/RestartOnGameUpdate",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
-        "EnumValues": {
-            "True": "true",
-            "False": "false"
-        }
+        "EnumValues": {},
+        "Hidden": true
     },
     {
         "DisplayName": "Game Update Restart Delay",
         "Category": "Space Engineers:stadia_controller",
         "Subcategory": "Torch:mode_heat:-1",
-        "Description": "Defines how long Torch waits to restart the server if a game update is detected. Restart On Game Update must be enabled.",
-        "Keywords": "Restart,Update,Delay,Torch,GameUpdateRestartDelayMins",
+        "Description": "",
+        "Keywords": "",
         "FieldName": "TorchConfig_GameUpdateRestartDelayMins",
         "InputType": "number",
         "IsFlagArgument": false,
         "ParamFieldName": "/TorchConfig/GameUpdateRestartDelayMins",
         "IncludeInCommandLine": false,
         "DefaultValue": "5",
-        "Placeholder": "5",
-        "Suffix": "minutes",
-        "EnumValues": {}
+        "EnumValues": {},
+        "Hidden": true
     },
     {
         "DisplayName": "Enable Torch Updates Check",
