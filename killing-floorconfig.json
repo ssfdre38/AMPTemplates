@@ -149,26 +149,6 @@
         "EnumValues": {}
     },
     {
-        "DisplayName": "Difficulty Level",
-        "Category": "Killing Floor:stadia_controller",
-        "Subcategory": "Server:dns:1",
-        "Description": "Sets the difficulty level",
-        "Keywords": "game,difficulty",
-        "FieldName": "GameDifficulty",
-        "InputType": "enum",
-        "IsFlagArgument": false,
-        "ParamFieldName": "Engine.GameInfo.GameDifficulty",
-        "IncludeInCommandLine": false,
-        "DefaultValue": "2.0",
-        "EnumValues": {
-            "1.0": "Easy",
-            "2.0": "Normal",
-            "4.0": "Hard",
-            "5.0": "Suicidal",
-            "7.0": "Hell on Earth"
-        }
-    },
-    {
         "DisplayName": "Enable Web Admin Interface",
         "Category": "Killing Floor:stadia_controller",
         "Subcategory": "Server:dns:1",
