@@ -39,6 +39,19 @@
         "EnumValues": {}
     },
     {
+        "DisplayName": "Admin Name",
+        "Category": "Killing Floor:stadia_controller",
+        "Subcategory": "Server:dns:1",
+        "Description": "",
+        "Keywords": "",
+        "FieldName": "AdminName",
+        "InputType": "text",
+        "Hidden": true,
+        "ParamFieldName": "Engine.GameReplicationInfo.AdminName",
+        "ExcludeFromImport": true,
+        "EnumValues": {}
+    },
+    {
         "DisplayName": "Server Name",
         "Category": "Killing Floor:stadia_controller",
         "Subcategory": "Server:dns:1",
