@@ -263,7 +263,7 @@
     },
     {
         "DisplayName": "Allow Admins To Pause",
-        "Category": "Killing Floor 2:stadia_controller",
+        "Category": "Killing Floor:stadia_controller",
         "Subcategory": "Server:dns:1",
         "Description": "If set, an admin will be able to pause the game",
         "Keywords": "admin,pause",
