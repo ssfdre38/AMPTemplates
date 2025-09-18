@@ -1,0 +1,20 @@
+[
+    {
+        "UpdateStageName": "SteamCMD Download",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "SteamCMD",
+        "UpdateSourceData": "215350",
+        "UpdateSourceArgs": "1250",
+        "UpdateSourceTarget": "{{$FullBaseDir}}",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "SteamCMD Download",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "SteamCMD",
+        "UpdateSourceData": "215360",
+        "UpdateSourceArgs": "1250",
+        "UpdateSourceTarget": "{{$FullBaseDir}}",
+        "SkipOnFailure": false
+    }
+]
