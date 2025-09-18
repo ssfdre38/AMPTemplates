@@ -63,11 +63,11 @@
         "IsFlagArgument": false,
         "ParamFieldName": "Map",
         "IncludeInCommandLine": false,
-        "DefaultValue": "KF-Bioticslab",
+        "DefaultValue": "KF-Bedlam.rom",
         "EnumValues": {
             "KF-AbusementPark.rom": "Abusement Park",
             "KF-Aperture.rom": "Aperture",
-            "KF-Bedlam.rom": "Bedlam",
+            "KF-Bedlam.rom": "Bedlam (default)",
             "KF-Biohazard.rom": "Biohazard",
             "KF-BioticsLab.rom": "Biotics Lab",
             "KF-Clandestine.rom": "Club Clandestine",
