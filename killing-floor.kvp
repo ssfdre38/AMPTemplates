@@ -31,19 +31,19 @@ App.DisplayName=Killing Floor
 App.RootDir=./killing-floor/
 App.BaseDirectory=./killing-floor/server/
 App.SteamWorkshopDownloadLocation=
-App.ExecutableWin=server\System\ucc.exe
+App.ExecutableWin=server\System\UCC.exe
 App.ExecutableLinux=server/System/ucc-bin-real
 App.WorkingDir=server/System
 App.LinuxCommandLineArgs=
 App.WindowsCommandLineArgs=
-App.CommandLineArgs=server {{Map}}{{CustomUrlArgs}}?game={{Game}}?VACSecured={{VACSecured}}?MaxPlayers={{$MaxUsers}}?multihome={{$ApplicationIPBinding}}?AdminName=admin?AdminPassword={{AdminPassword}} -Port={{$GamePort}} -QueryPort={{$QueryPort}} -WebAdminPort={{$WebAdminPort}} -nohomedir {{$FormattedArgs}} {{CustomSwitches}}
+App.CommandLineArgs=server {{Map}}{{CustomUrlArgs}}?game={{Game}}?VACSecured={{VACSecured}}?MaxPlayers={{$MaxUsers}}?multihome={{$ApplicationIPBinding}}?AdminName=admin?AdminPassword={{AdminPassword}} -Port={{$GamePort}} -QueryPort={{$QueryPort}} -WebAdminPort={{$WebAdminPort}} -nohomedir -log=server.log {{$FormattedArgs}} {{CustomSwitches}}
 App.UseLinuxIOREDIR=False
 App.AppSettings={}
 App.EnvironmentVariables={"LD_LIBRARY_PATH":"{{$FullBaseDir}}System:{{$FullRootDir}}linux64:%LD_LIBRARY_PATH%","SteamAppId":"1250"}
 App.CommandLineParameterFormat=-{0}="{1}"
 App.CommandLineParameterDelimiter= 
 App.ExitMethod=OS_CLOSE
-App.ExitMethodWindows=None
+App.ExitMethodWindows=CtrlC
 App.ExitTimeout=30
 App.ExitString=stop
 App.ExitFile=app_exit.lck
