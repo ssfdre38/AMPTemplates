@@ -27,7 +27,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'ring-racers/server'; Invoke-WebRequest -UseBasicParsing -Uri ((Invoke-RestMethod -UseBasicParsing -Uri 'https://api.github.com/repos/KartKrewDev/RingRacers/releases/latest').assets | Where-Object { $_.browser_download_url -match 'Dr\\.Robotnik\\.s-Ring-Racers-v.*-Installer\\.exe$' })[0].browser_download_url -OutFile 'rrinstaller.exe'; & ../7-Zip/7z.exe x -y -aoa rrinstaller.exe | Out-Null; Remove-Item -Path 'rrinstaller.exe' -Force -ErrorAction SilentlyContinue | Out-Null\"",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'ring-racers/server'; $ServerVersion='{{ServerVersion}}'; if ([string]::IsNullOrWhiteSpace($ServerVersion)) { $ServerVersion = (Invoke-RestMethod -UseBasicParsing -Uri 'https://api.github.com/repos/KartKrewDev/RingRacers/releases/latest').tag_name }; if ($ServerVersion -notmatch '^v\\d+\\.\\d+(-rc\\d+)?$') { Write-Output \\\"Invalid server version format specified\\\"; exit 1 }; Invoke-WebRequest -UseBasicParsing -Uri https://github.com/KartKrewDev/RingRacers/releases/download/$ServerVersion/Dr.Robotnik.s-Ring-Racers-$ServerVersion-Installer.exe -OutFile 'rrinstaller.exe'; & ../7-Zip/7z.exe x -y -aoa rrinstaller.exe | Out-Null; Remove-Item -Path 'rrinstaller.exe' -Force -ErrorAction SilentlyContinue | Out-Null\"",
         "SkipOnFailure": false
     },
     {
@@ -35,7 +35,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd ring-racers/server && DownloadURL=$(wget -qO- https://api.github.com/repos/KartKrewDev/RingRacers/releases/latest | grep browser_download_url | cut -d\\\\\\\" -f4 | grep Dr\\.Robotnik\\.s-Ring-Racers-v.*-Installer\\.exe$) && wget -qO rrinstaller.exe $DownloadURL && ../7-Zip/7zzs x -y -aoa rrinstaller.exe >/dev/null 2>&1 && rm -f rrinstaller.exe >/dev/null 2>&1\"",
+        "UpdateSourceArgs": "-c \"cd ring-racers/server && ServerVersion=\\\"{{ServerVersion}}\\\" &&if [[ -z \\\"$ServerVersion\\\" ]]; then ServerVersion=$(wget -qO- https://api.github.com/repos/KartKrewDev/RingRacers/releases/latest | jq -r .tag_name); fi && if [[ ! \\\"$ServerVersion\\\" =~ ^v[0-9]+\\.[0-9]+(-rc[0-9]+)?$ ]]; then echo \\\"Invalid server version format specified\\\" && exit 1; fi && wget -qO rrinstaller.exe https://github.com/KartKrewDev/RingRacers/releases/download/$ServerVersion/Dr.Robotnik.s-Ring-Racers-$ServerVersion-Installer.exe && ../7-Zip/7zzs x -y -aoa rrinstaller.exe >/dev/null 2>&1 && rm -f rrinstaller.exe >/dev/null 2>&1\"",
         "SkipOnFailure": false
     },
     {

@@ -163,5 +163,18 @@
         "ParamFieldName": "CustomServerArgs",
         "DefaultValue": "",
         "EnumValues": {}
+    },
+    {
+        "DisplayName": "Server Version",
+        "Category": "Updates",
+        "Subcategory": "Server Updates:build:-1",
+        "Description": "Sets the [version number](https://github.com/KartKrewDev/RingRacers/tags) for a specific server version to install. Specify the full tag name. Empty = latest release version. Update the server after changing this setting",
+        "Keywords": "server,specific,version",
+        "FieldName": "ServerVersion",
+        "InputType": "text",
+        "ParamFieldName": "ServerVersion",
+        "DefaultValue": "",
+        "Placeholder": "v2.3 | v2.4-rc1",
+        "EnumValues": {}
     }
 ]
