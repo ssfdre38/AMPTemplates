@@ -81,7 +81,7 @@
         "UpdateStageName": "Download TeamSpeak 3 Client",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "FetchURL",
-        "UpdateSourceData": "https://files.teamspeak-services.com/releases/client/3.6.0/TeamSpeak3-Client-linux_amd64-3.6.0.run",
+        "UpdateSourceData": "https://files.teamspeak-services.com/releases/client/3.6.1/TeamSpeak3-Client-linux_amd64-3.6.1.run",
         "UpdateSourceTarget": "{{$FullBaseDir}}",
         "OverwriteExistingFiles": true,
         "UpdateSourceConditionSetting": "BotMode",
