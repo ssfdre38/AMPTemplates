@@ -51,7 +51,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd sinusbot && chmod 755 sinusbot && mv scripts default_scripts && rm -rf private.dat && ln -s data/private.dat private.dat\"",
+        "UpdateSourceArgs": "-c \"cd sinusbot && chmod 755 sinusbot && rm -rf default_scripts private.dat && mv scripts default_scripts && ln -s data/private.dat private.dat\"",
         "SkipOnFailure": false
     },
     {
