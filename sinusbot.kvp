@@ -38,7 +38,7 @@ App.LinuxCommandLineArgs=
 App.WindowsCommandLineArgs=
 App.CommandLineArgs={{$PlatformArgs}} {{$FormattedArgs}}
 App.UseLinuxIOREDIR=False
-App.AppSettings={"YoutubeDLPath":"./yt-dlp/yt-dlp","DataDir":"./data","BotMode":"./TeamSpeak3-Client-linux_amd64/ts3client_linux_amd64","override-password":""}
+App.AppSettings={}
 App.EnvironmentVariables={}
 App.CommandLineParameterFormat=--{0}="{1}"
 App.CommandLineParameterDelimiter= 
