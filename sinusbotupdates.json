@@ -1,12 +1,5 @@
 [
     {
-        "UpdateStageName": "Create data Directory",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "CreateDirectory",
-        "UpdateSourceArgs": "{{$FullBaseDir}}data",
-        "SkipOnFailure": false
-    },
-    {
         "UpdateStageName": "Create Text-To-Speech Directory",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "CreateDirectory",
@@ -47,14 +40,6 @@
         "SkipOnFailure": false
     },
     {
-        "UpdateStageName": "Configure SinusBot",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd sinusbot && chmod 755 sinusbot && rm -rf default_scripts private.dat && mv scripts default_scripts && ln -s data/private.dat private.dat\"",
-        "SkipOnFailure": false
-    },
-    {
         "UpdateStageName": "Download Text-To-Speech",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "FetchURL",
@@ -80,13 +65,6 @@
         "UpdateSourceData": "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp",
         "UpdateSourceTarget": "{{$FullBaseDir}}yt-dlp",
         "OverwriteExistingFiles": true,
-        "SkipOnFailure": false
-    },
-    {
-        "UpdateStageName": "Set Executable Flag",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "SetExecutableFlag",
-        "UpdateSourceArgs": "{{$FullBaseDir}}yt-dlp/yt-dlp",
         "SkipOnFailure": false
     },
     {
@@ -129,6 +107,14 @@
         "UpdateSourceArgs": "config.ini",
         "UpdateSourceTarget": "{{$FullBaseDir}}",
         "OverwriteExistingFiles": false,
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Make Binaries Executable",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd sinusbot && chmod 755 sinusbot yt-dlp/yt-dlp\"",
         "SkipOnFailure": false
     }
 ]
