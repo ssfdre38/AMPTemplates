@@ -45,7 +45,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "FetchURL",
         "UpdateSourceData": "https://raw.githubusercontent.com/Greelan/AMPTemplates/dev/renowngame.ini",
-        "UpdateSourceTarget": "{{$FullBaseDir}}Renown_Combat/aved/Config/WindowsServer",
+        "UpdateSourceTarget": "{{$FullBaseDir}}Renown_Combat/Saved/Config/WindowsServer",
         "UpdateSourceArgs": "Game.ini",
         "OverwriteExistingFiles": false
     }
