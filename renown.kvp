@@ -35,8 +35,8 @@ App.ExecutableWin=1512690\Renown_Combat\Binaries\Win64\Renown_CombatServer-Win64
 App.ExecutableLinux=1512690/Renown_Combat/Binaries/Linux/Renown_CombatServer-Linux-Shipping
 App.WorkingDir=1512690
 App.LinuxCommandLineArgs=
-App.WindowsCommandLineArgs=
-App.CommandLineArgs={{$PlatformArgs}} Renown_Combat -Port={{$GamePort}} -QueryPort={{$QueryPort}} -BeaconPort={{$BeaconPort}} -RCONPort={{$RCONPort}} -RCONPassword="{{$RemoteAdminPassword}}" {{$FormattedArgs}} -log=server.log -ini:Engine:[EpicOnlineServices]:DedicatedServerClientId=xyza78917DzEE5Ey0isciVt66QDm5IzM -ini:Engine:[EpicOnlineServices]:DedicatedServerClientSecret=m/mrnywFCdeA1mW3ZSvv3qcVlQlfwi1a+7Z63Q44EGU
+App.WindowsCommandLineArgs=-stdout
+App.CommandLineArgs=Renown_Combat -Port={{$GamePort}} -QueryPort={{$QueryPort}} -BeaconPort={{$BeaconPort}} -RCONPort={{$RCONPort}} -RCONPassword="{{$RemoteAdminPassword}}" {{$FormattedArgs}} {{$PlatformArgs}} -ini:Engine:[EpicOnlineServices]:DedicatedServerClientId=xyza78917DzEE5Ey0isciVt66QDm5IzM -ini:Engine:[EpicOnlineServices]:DedicatedServerClientSecret=m/mrnywFCdeA1mW3ZSvv3qcVlQlfwi1a+7Z63Q44EGU
 App.UseLinuxIOREDIR=False
 App.AppSettings={}
 App.EnvironmentVariables={"LD_LIBRARY_PATH":"{{$FullBaseDir}}linux64:%LD_LIBRARY_PATH%","SteamAppId":"1488310"}
@@ -97,7 +97,7 @@ App.ApplicationReadyMode=RegexMatch
 Console.FilterMatchRegex=Command unknown\. ping  Try: help
 Console.FilterMatchReplacement=
 Console.ThrowawayMessageRegex=^(WARNING|ERROR): Shader.+$
-Console.AppReadyRegex=^\[[\d\.]+-[\d\.:]+\]\[[\d ]+\]LogGameState: Match State Changed from WaitingToStart to InProgress$
+Console.AppReadyRegex=^(?:\[[\d\.]+-[\d\.:]+\]\[[\d ]+\])?LogGameState: Match State Changed from WaitingToStart to InProgress$
 Console.UserJoinRegex=^$
 Console.UserLeaveRegex=^$
 Console.UserChatRegex=^$
