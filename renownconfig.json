@@ -77,7 +77,7 @@
         "Description": "Sets a custom region tag for the server, if 'Custom' is selected under Server Region",
         "Keywords": "custom,region",
         "FieldName": "CustomRegion",
-        "InputType": "enum",
+        "InputType": "text",
         "ParamFieldName": "CustomRegion",
         "DefaultValue": "",
         "Placeholder": "Modded",
