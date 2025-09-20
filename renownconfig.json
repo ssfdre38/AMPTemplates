@@ -275,7 +275,7 @@
         "DisplayName": "Global Smelting Multiplier",
         "Category": "Renown:stadia_controller",
         "Subcategory": "Gameplay:joystick:2",
-        "Description": "Sets the multiplier for smelting speed globally.",
+        "Description": "Sets the multiplier for smelting speed globally",
         "Keywords": "smelting,multiplier,global",
         "FieldName": "GlobalSmeltingMultiplier",
         "InputType": "number",
