@@ -18,7 +18,7 @@
         "Subcategory": "Server:dns:1",
         "Description": "",
         "Keywords": "",
-        "FieldName": "$RCONPassword",
+        "FieldName": "$RemoteAdminPassword",
         "InputType": "text",
         "ParamFieldName": "/Game/Core/Blueprints/Renown_GameInstance.Renown_GameInstance_C.RCONPassword",
         "Hidden": true,
