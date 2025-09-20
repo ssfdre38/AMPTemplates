@@ -23,6 +23,14 @@
         "SkipOnFailure": false
     },
     {
+        "UpdateStageName": "Steamclient Copy",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"mkdir -p ~/.steam/sdk64 && \\cp -f \\\"{{$FullRootDir}}linux64/steamclient.so\\\" ~/.steam/sdk64/\"",
+        "SkipOnFailure": false
+    },
+    {
         "UpdateStageName": "Metamod Download",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
