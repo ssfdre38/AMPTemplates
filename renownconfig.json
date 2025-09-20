@@ -10,6 +10,7 @@
         "ParamFieldName": "/Game/Core/Blueprints/Renown_GameInstance.Renown_GameInstance_C.EnableRCON",
         "Hidden": true,
         "DefaultValue": "True",
+        "ExcludeFromImport": true,
         "EnumValues": {}
     },
     {
@@ -22,6 +23,7 @@
         "InputType": "text",
         "ParamFieldName": "/Game/Core/Blueprints/Renown_GameInstance.Renown_GameInstance_C.RCONPassword",
         "Hidden": true,
+        "ExcludeFromImport": true,
         "EnumValues": {}
     },
     {
@@ -34,6 +36,7 @@
         "InputType": "number",
         "ParamFieldName": "/Game/Core/Blueprints/Renown_GameInstance.Renown_GameInstance_C.RCONPort",
         "Hidden": true,
+        "ExcludeFromImport": true,
         "EnumValues": {}
     },
     {
