@@ -211,7 +211,6 @@
         "InputType": "number",
         "MinValue": "1",
         "ParamFieldName": "/Game/Core/Blueprints/Renown_GameInstance.Renown_GameInstance_C.MaxPing",
-        "IncludeInCommandLine": true,
         "DefaultValue": "180",
         "Placeholder": "180",
         "EnumValues": {}
@@ -226,7 +225,6 @@
         "InputType": "number",
         "MinValue": "0",
         "ParamFieldName": "/Game/Core/Blueprints/Renown_GameInstance.Renown_GameInstance_C.RCONChatMessagesLimit",
-        "IncludeInCommandLine": true,
         "DefaultValue": "30",
         "Placeholder": "30",
         "EnumValues": {}
