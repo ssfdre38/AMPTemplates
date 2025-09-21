@@ -40,7 +40,7 @@ App.CommandLineArgs=Renown_Combat -Port={{$GamePort}} -QueryPort={{$QueryPort}} 
 App.UseLinuxIOREDIR=False
 App.AppSettings={}
 App.EnvironmentVariables={"LD_LIBRARY_PATH":"{{$FullBaseDir}}linux64:%LD_LIBRARY_PATH%","SteamAppId":"1488310"}
-App.CommandLineParameterFormat=-{0} "{1}"
+App.CommandLineParameterFormat=-{0}={1}
 App.CommandLineParameterDelimiter= 
 App.ExitMethod=String
 App.ExitMethodWindows=None
