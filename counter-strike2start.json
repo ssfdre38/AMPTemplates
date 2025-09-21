@@ -1,0 +1,10 @@
+[
+    {
+        "UpdateStageName": "Steamclient Copy",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"\\cp -f \\\"{{$FullRootDir}}linux64/steamclient.so\\\" \\\"{{$FullBaseDir}}game/bin/linuxsteamrt64/steamclient.so\\\"\"",
+        "SkipOnFailure": false
+    }
+]
