@@ -1,6 +1,6 @@
 Meta.DisplayName=Hollow Knight MP Mod
 Meta.Description=Hollow Knight MP Dedicated Server Mod
-Meta.OS=Windows, Linux
+Meta.OS=Windows
 Meta.AarchSupport=NotSupported
 Meta.Arch=x86_64
 Meta.Author=Greelan
