@@ -42,7 +42,7 @@ App.AppSettings={}
 App.EnvironmentVariables={"SteamAppId":"367520"}
 App.CommandLineParameterFormat=-{0}={1}
 App.CommandLineParameterDelimiter= 
-App.ExitMethod=String
+App.ExitMethod=OS_CLOSE
 App.ExitTimeout=30
 App.ExitString=exit
 App.ExitFile=app_exit.lck
@@ -81,7 +81,7 @@ App.SteamUpdateAnonymousLogin=True
 App.SteamForceLoginPrompt=False
 App.RapidStartup=True
 App.DumpFullChildProcessTree=False
-App.MonitorChildProcessName=^.*HKMPServer\.exe {{$ServerPort}}.*$
+App.MonitorChildProcessName=
 App.SupportsUniversalSleep=False
 App.WakeupMode=Any
 App.ApplicationReadyMode=RegexMatch
