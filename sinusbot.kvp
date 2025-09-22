@@ -1,7 +1,7 @@
 Meta.DisplayName=SinusBot
 Meta.Description=SinusBot - TeamSpeak 3/6 and Discord music bot
 Meta.OS=Linux
-Meta.AarchSupport=Unknown
+Meta.AarchSupport=NotSupported
 Meta.Arch=x86_64
 Meta.Author=Greelan
 Meta.URL=https://sinusbot.com
