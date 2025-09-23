@@ -12,6 +12,6 @@
         "Port": 3001,
         "Name": "SSH Port",
         "Description": "Port for server SSH traffic",
-        "Ref": "ServerPort"
+        "Ref": "SSHPort"
     }
 ]
