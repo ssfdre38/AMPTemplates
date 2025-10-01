@@ -1,11 +1,9 @@
 [
     {
-        "UpdateStageName": "Environment Check",
+        "UpdateStageName": "Create Workspace Directory",
         "UpdateSourcePlatform": "All",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "{{Linux:/bin/bash}}{{Windows:powershell.exe}}",
-        "UpdateSourceArgs": "{{Linux:-c \"echo 'Environment Check:'; pwd; whoami; which wget || echo 'wget not found'; which curl || echo 'curl not found'; ls -la; echo 'Network test:'; wget -qO- https://httpbin.org/ip 2>/dev/null || curl -s https://httpbin.org/ip || echo 'No internet access'\"}}{{Windows:-NoProfile -Command \"Write-Output 'Environment Check:'; Get-Location; whoami; Get-Command wget -ErrorAction SilentlyContinue | Out-Null; if ($?) { Write-Output 'wget available' } else { Write-Output 'wget not found' }; Get-ChildItem; Write-Output 'Network test:'; try { (Invoke-WebRequest -UseBasicParsing -Uri 'https://httpbin.org/ip').Content } catch { Write-Output 'No internet access' }\"}}",
-        "SkipOnFailure": true
+        "UpdateSource": "CreateDirectory",
+        "UpdateSourceArgs": "{{$FullBaseDir}}workspace"
     },
     {
         "UpdateStageName": "VS Code Server Download",
@@ -13,7 +11,7 @@
         "UpdateSourceArch": "x86_64",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"mkdir -p vscode-server && cd vscode-server && echo 'Downloading Microsoft VS Code Server for Linux x64...'; if [[ -f code-server && -x code-server ]]; then echo 'VS Code Server already installed. Checking version...'; ./code-server --version 2>/dev/null || echo 'Version check failed, will re-download'; fi; echo 'Downloading latest VS Code Server...'; wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-x64/stable' || { echo 'Download failed from Microsoft'; exit 1; }; echo 'Extracting...'; tar -xzf vscode-server.tar.gz || { echo 'Extract failed'; exit 1; }; rm -f vscode-server.tar.gz; echo 'Setting up VS Code Server...'; find . -name 'code-server' -type f -executable -exec mv {} . \\; 2>/dev/null || mv */bin/code-server . 2>/dev/null || echo 'Could not find code-server executable'; chmod +x code-server 2>/dev/null || true; echo 'Microsoft VS Code Server downloaded successfully'; ./code-server --version 2>/dev/null || echo 'Warning: Version check failed but installation completed'\"",
+        "UpdateSourceArgs": "-c \"cd vscode-server && echo 'Downloading Microsoft VS Code Server for Linux x64'; wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-x64/stable' || { echo 'Download failed'; exit 1; }; tar -xzf vscode-server.tar.gz && rm -f vscode-server.tar.gz && find . -name 'code-server' -type f -executable -exec mv {} . \\; && chmod +x code-server && echo 'Microsoft VS Code Server installed'\"",
         "SkipOnFailure": false
     },
     {
@@ -22,7 +20,7 @@
         "UpdateSourceArch": "aarch64",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"mkdir -p vscode-server && cd vscode-server && echo 'Downloading Microsoft VS Code Server for Linux ARM64...'; if [[ -f code-server && -x code-server ]]; then echo 'VS Code Server already installed. Checking version...'; ./code-server --version 2>/dev/null || echo 'Version check failed, will re-download'; fi; echo 'Downloading latest VS Code Server...'; wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-arm64/stable' || { echo 'Download failed from Microsoft'; exit 1; }; echo 'Extracting...'; tar -xzf vscode-server.tar.gz || { echo 'Extract failed'; exit 1; }; rm -f vscode-server.tar.gz; echo 'Setting up VS Code Server...'; find . -name 'code-server' -type f -executable -exec mv {} . \\; 2>/dev/null || mv */bin/code-server . 2>/dev/null || echo 'Could not find code-server executable'; chmod +x code-server 2>/dev/null || true; echo 'Microsoft VS Code Server downloaded successfully'; ./code-server --version 2>/dev/null || echo 'Warning: Version check failed but installation completed'\"",
+        "UpdateSourceArgs": "-c \"cd vscode-server && echo 'Downloading Microsoft VS Code Server for Linux ARM64'; wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-arm64/stable' || { echo 'Download failed'; exit 1; }; tar -xzf vscode-server.tar.gz && rm -f vscode-server.tar.gz && find . -name 'code-server' -type f -executable -exec mv {} . \\; && chmod +x code-server && echo 'Microsoft VS Code Server installed'\"",
         "SkipOnFailure": false
     },
     {
@@ -30,39 +28,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; if (-not (Test-Path 'vscode-server')) { New-Item -ItemType Directory -Path 'vscode-server' -Force | Out-Null }; Set-Location -Path 'vscode-server'; Write-Output 'Downloading Microsoft VS Code Server for Windows...'; if ((Test-Path 'code-server.exe')) { Write-Output 'VS Code Server already installed. Checking...'; try { & './code-server.exe' --version 2>$null | Out-Null } catch { Write-Output 'Version check failed, will re-download' } }; Write-Output 'Downloading latest VS Code Server...'; try { Invoke-WebRequest -UseBasicParsing -Uri 'https://update.code.visualstudio.com/latest/server-win32-x64/stable' -OutFile 'vscode-server.zip' -ErrorAction Stop } catch { Write-Output 'Download failed from Microsoft'; exit 1; }; Write-Output 'Extracting...'; try { Expand-Archive -Path 'vscode-server.zip' -DestinationPath '.' -Force; Remove-Item 'vscode-server.zip' -Force; Write-Output 'Setting up VS Code Server...'; Get-ChildItem -Recurse -Name 'code-server.exe' | ForEach-Object { Copy-Item $_ '.' -Force }; Write-Output 'Microsoft VS Code Server downloaded successfully'; try { & './code-server.exe' --version 2>$null | Out-Null; Write-Output 'Installation verified' } catch { Write-Output 'Warning: Version check failed but installation completed' } } catch { Write-Output 'Extract failed'; exit 1; }\"",
-        "SkipOnFailure": false
-    },
-    {
-        "UpdateStageName": "Create Workspace Directory",
-        "UpdateSourcePlatform": "All",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "{{Linux:/bin/bash}}{{Windows:powershell.exe}}",
-        "UpdateSourceArgs": "{{Linux:-c \"mkdir -p {{WorkspaceDir}} && echo 'Workspace directory created at {{WorkspaceDir}}'\"}}{{Windows:-NoProfile -Command \"if (-not (Test-Path '{{WorkspaceDir}}')) { New-Item -ItemType Directory -Path '{{WorkspaceDir}}' -Force | Out-Null }; Write-Output 'Workspace directory created at {{WorkspaceDir}}'\"}}",
-        "SkipOnFailure": true
-    },
-    {
-        "UpdateStageName": "Setup Authentication Arguments",
-        "UpdateSourcePlatform": "All",
-        "UpdateSource": "SetSetting",
-        "UpdateSourceData": "AuthArgs",
-        "UpdateSourceArgs": "{{AuthType:none:--without-connection-token}}{{AuthType:github:--github-auth={{GitHubToken}}}}",
-        "SkipOnFailure": false
-    },
-    {
-        "UpdateStageName": "Setup Config Arguments",
-        "UpdateSourcePlatform": "All",
-        "UpdateSource": "SetSetting",
-        "UpdateSourceData": "ConfigArgs",
-        "UpdateSourceArgs": "{{UserDataDir:--user-data-dir={{UserDataDir}}}} {{ExtensionsDir:--extensions-dir={{ExtensionsDir}}}} {{EnableTelemetry:true:--enable-telemetry}} {{ConnectionToken:--connection-token={{ConnectionToken}}}}",
-        "SkipOnFailure": false
-    },
-    {
-        "UpdateStageName": "Setup Workspace Arguments",
-        "UpdateSourcePlatform": "All",
-        "UpdateSource": "SetSetting",
-        "UpdateSourceData": "WorkspaceArgs",
-        "UpdateSourceArgs": "{{WorkspaceDir}}",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'vscode-server'; Write-Output 'Downloading Microsoft VS Code Server for Windows'; try { Invoke-WebRequest -UseBasicParsing -Uri 'https://update.code.visualstudio.com/latest/server-win32-x64/stable' -OutFile 'vscode-server.zip' -ErrorAction Stop; Expand-Archive -Path 'vscode-server.zip' -DestinationPath '.' -Force; Remove-Item 'vscode-server.zip' -Force; Get-ChildItem -Recurse -Name 'code-server.exe' | ForEach-Object { Copy-Item $_ 'code-server.exe' -Force; break }; Write-Output 'Microsoft VS Code Server installed' } catch { Write-Output 'Download/extract failed'; exit 1; }\"",
         "SkipOnFailure": false
     }
 ]

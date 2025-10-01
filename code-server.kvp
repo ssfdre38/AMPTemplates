@@ -71,7 +71,6 @@ App.RCONConnectRetrySeconds=5
 App.RCONHeartbeatMinutes=0
 App.RCONHeartbeatCommand=
 App.TelnetLoginFormat={0}
-App.UpdateSource=Multi
 App.UpdateSources=@IncludeJson[code-serverupdates.json]
 App.PreStartStages=[]
 App.UserActions=[]
