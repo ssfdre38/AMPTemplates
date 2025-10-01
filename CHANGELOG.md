@@ -15,6 +15,17 @@ This repository contains **two** VS Code Server templates for AMP:
 
 ### **2025-01-10 - Latest Changes**
 
+#### **CRITICAL: Fix Microsoft VS Code Server Directory Structure** (Commit: a5b5f1a9)
+- **Issue**: `chmod` failing with exit code 1 - `/AMP/vscode-server/bin/code-server` not found
+- **Root Cause**: Microsoft VS Code Server extracts to `vscode-server-linux-x64/` subdirectory, not root
+- **Log Analysis**: Download and extraction successful, but `SetExecutableFlag` failed because file wasn't at expected path
+- **Solution**: 
+  - Added `mv vscode-server-linux-x64/* .` to flatten directory structure after extraction
+  - Fixed Windows executable extension from `.cmd` to `.exe` for Microsoft version
+  - Applied fix to both Linux architectures (x64 and ARM64)
+- **Result**: Executable now properly located at `bin/code-server` as expected by AMP
+- **Files Changed**: `vscode-server.kvp`, `vscode-serverupdates.json`
+
 #### **Fix SetExecutableFlag Path** (Commit: 2634b51b)
 - **Issue**: Error 127 persisting after directory structure fixes
 - **Analysis**: Studied official AMP templates (uptime-kuma, altv) for executable path patterns
