@@ -11,7 +11,7 @@
         "UpdateSourceArch": "x86_64",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd code-server && CodeServerVersion='{{CodeServerVersion}}'; if [[ -z '$CodeServerVersion' ]]; then echo 'Fetching latest version...'; CodeServerVersion=$(wget -qO- https://api.github.com/repos/coder/code-server/releases/latest | grep 'tag_name' | cut -d'\\\"' -f4 | sed 's/v//') || { echo 'Failed to fetch latest version'; exit 1; }; fi; echo 'Downloading Code Server v$CodeServerVersion for Linux x64'; wget -qO code-server.tar.gz https://github.com/coder/code-server/releases/download/v$CodeServerVersion/code-server-$CodeServerVersion-linux-amd64.tar.gz || { echo 'Download failed'; exit 1; }; tar -xzf code-server.tar.gz --strip-components=1 && rm -f code-server.tar.gz && mv bin/code-server . && chmod +x code-server && echo 'Code Server v$CodeServerVersion installed'\"",
+        "UpdateSourceArgs": "-c \"cd code-server && CodeServerVersion='{{CodeServerVersion}}'; if [[ -z '$CodeServerVersion' ]]; then echo 'Fetching latest version...'; CodeServerVersion=$(wget -qO- https://api.github.com/repos/coder/code-server/releases/latest | grep 'tag_name' | cut -d'\\\"' -f4 | sed 's/v//') || { echo 'Failed to fetch latest version'; exit 1; }; fi; echo 'Downloading Code Server v$CodeServerVersion for Linux x64'; wget -qO code-server.tar.gz https://github.com/coder/code-server/releases/download/v$CodeServerVersion/code-server-$CodeServerVersion-linux-amd64.tar.gz || { echo 'Download failed'; exit 1; }; tar -xzf code-server.tar.gz --strip-components=1 && rm -f code-server.tar.gz && echo 'Code Server v$CodeServerVersion downloaded'\"",
         "SkipOnFailure": false
     },
     {
@@ -20,7 +20,7 @@
         "UpdateSourceArch": "aarch64",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd code-server && CodeServerVersion='{{CodeServerVersion}}'; if [[ -z '$CodeServerVersion' ]]; then echo 'Fetching latest version...'; CodeServerVersion=$(wget -qO- https://api.github.com/repos/coder/code-server/releases/latest | grep 'tag_name' | cut -d'\\\"' -f4 | sed 's/v//') || { echo 'Failed to fetch latest version'; exit 1; }; fi; echo 'Downloading Code Server v$CodeServerVersion for Linux ARM64'; wget -qO code-server.tar.gz https://github.com/coder/code-server/releases/download/v$CodeServerVersion/code-server-$CodeServerVersion-linux-arm64.tar.gz || { echo 'Download failed'; exit 1; }; tar -xzf code-server.tar.gz --strip-components=1 && rm -f code-server.tar.gz && mv bin/code-server . && chmod +x code-server && echo 'Code Server v$CodeServerVersion installed'\"",
+        "UpdateSourceArgs": "-c \"cd code-server && CodeServerVersion='{{CodeServerVersion}}'; if [[ -z '$CodeServerVersion' ]]; then echo 'Fetching latest version...'; CodeServerVersion=$(wget -qO- https://api.github.com/repos/coder/code-server/releases/latest | grep 'tag_name' | cut -d'\\\"' -f4 | sed 's/v//') || { echo 'Failed to fetch latest version'; exit 1; }; fi; echo 'Downloading Code Server v$CodeServerVersion for Linux ARM64'; wget -qO code-server.tar.gz https://github.com/coder/code-server/releases/download/v$CodeServerVersion/code-server-$CodeServerVersion-linux-arm64.tar.gz || { echo 'Download failed'; exit 1; }; tar -xzf code-server.tar.gz --strip-components=1 && rm -f code-server.tar.gz && echo 'Code Server v$CodeServerVersion downloaded'\"",
         "SkipOnFailure": false
     },
     {
@@ -30,5 +30,11 @@
         "UpdateSourceData": "powershell.exe",
         "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'code-server'; $CodeServerVersion='{{CodeServerVersion}}'; if ([string]::IsNullOrWhiteSpace($CodeServerVersion)) { Write-Output 'Fetching latest version...'; try { $CodeServerVersion = (Invoke-RestMethod -UseBasicParsing -Uri 'https://api.github.com/repos/coder/code-server/releases/latest').tag_name -replace '^v', '' } catch { Write-Output 'Failed to fetch latest version'; exit 1 } }; Write-Output \\\"Downloading Code Server v$CodeServerVersion for Windows\\\"; try { Invoke-WebRequest -UseBasicParsing -Uri \\\"https://github.com/coder/code-server/releases/download/v$CodeServerVersion/code-server-$CodeServerVersion-windows-amd64.zip\\\" -OutFile 'code-server.zip' -ErrorAction Stop; Expand-Archive -Path 'code-server.zip' -DestinationPath '.' -Force; Remove-Item 'code-server.zip' -Force; Get-ChildItem -Directory | Where-Object { $_.Name -like 'code-server-*' } | ForEach-Object { Get-ChildItem $_.FullName | Move-Item -Destination '.' -Force; Remove-Item $_.FullName -Recurse -Force }; if (Test-Path 'bin\\code-server.exe') { Move-Item 'bin\\code-server.exe' 'code-server.exe' -Force }; Write-Output \\\"Code Server v$CodeServerVersion installed\\\" } catch { Write-Output 'Download/extract failed'; exit 1; }\"",
         "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Make Server Executable",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "SetExecutableFlag",
+        "UpdateSourceArgs": "{{$FullBaseDir}}bin/code-server"
     }
 ]
