@@ -1,5 +1,48 @@
 # VS Code Server Template Changelog
 
+## Version 5.0 - Critical Node.js and IP Binding Fixes - 2024-12-19
+
+### 🚨 Breaking Changes
+- **Fixed IP Binding**: Changed to `{{$PrimaryIPAddress}}` to comply with AMP requirements that prohibit `0.0.0.0` binding
+- **Fixed Executable Path**: Updated to use `bin/code-server` to maintain proper VS Code Server directory structure
+- **Complete Installation**: Now installs full VS Code Server distribution including Node.js runtime and all dependencies
+
+### 🐛 Critical Bug Fixes
+- **Error 127 Fixed**: Resolved "/AMP/node: not found" error by including complete VS Code Server distribution with Node.js runtime
+- **IP Binding Error**: Fixed "You must select a specific IP address for this server to function correctly in AMP" error 
+- **Directory Structure**: Maintained proper VS Code Server file structure instead of extracting only the binary
+- **Node.js Dependencies**: Included complete Node.js runtime that VS Code Server requires to function
+
+### 🔧 Major Improvements
+- **Complete Distribution**: Now downloads and installs the entire VS Code Server package with all required files
+- **Proper File Structure**: Maintains Microsoft's intended directory layout:
+  ```
+  vscode-server/
+  ├── bin/code-server        # Main executable
+  ├── extensions/            # Built-in extensions  
+  ├── node_modules/          # Node.js dependencies
+  ├── out/                   # Compiled JavaScript
+  ├── node                   # Node.js runtime (Linux only)
+  ├── package.json          # Package information
+  └── workspace/             # User workspace
+  ```
+- **Enhanced Error Handling**: Better cleanup and error recovery during updates
+- **Forced IP Binding**: Added `App.ForceIPBinding=True` to ensure compliance with AMP security requirements
+
+### 📋 Technical Details
+- **Node.js Runtime**: VS Code Server requires Node.js runtime which is now properly included
+- **Directory Preservation**: Update process now preserves the complete Microsoft VS Code Server structure
+- **Permission Handling**: Proper executable permissions set during installation
+- **Cross-Platform**: Enhanced Windows PowerShell and Linux bash scripts for reliable installation
+
+### 🔧 Configuration Updates
+- `App.ForceIPBinding` set to `True` for AMP compliance
+- `App.ApplicationIPBinding` uses `{{$PrimaryIPAddress}}` instead of `0.0.0.0`
+- Executable paths corrected to `bin/code-server` location
+- Enhanced update mechanisms with complete distribution handling
+
+---
+
 ## Version 4.0 - Major Security and Compliance Fixes - 2024-12-26
 
 ### Breaking Changes
