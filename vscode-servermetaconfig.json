@@ -1,1 +1,7 @@
-[]
+[
+    {
+        "ConfigFile": "{{$FullBaseDir}}AMPConfig.json",
+        "AutoMap": true,
+        "ConfigType": "AMPConfig"
+    }
+]

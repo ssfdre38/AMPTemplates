@@ -122,6 +122,20 @@
         "EnumValues": {}
     },
     {
+        "DisplayName": "Server Version",
+        "Category": "Updates",
+        "Subcategory": "Server Updates:build:-1",
+        "Description": "Sets the server version to install. Always use Latest unless you need a specific version for compatibility",
+        "Keywords": "server,version,latest,update",
+        "FieldName": "ServerStream",
+        "InputType": "enum",
+        "ParamFieldName": "ServerStream",
+        "DefaultValue": "latest",
+        "EnumValues": {
+            "latest": "Latest stable release (recommended)"
+        }
+    },
+    {
         "DisplayName": "Authentication Arguments",
         "Category": "VS Code Server:server",
         "Subcategory": "Hidden",

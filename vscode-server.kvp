@@ -48,7 +48,7 @@ App.ExitFile=app_exit.lck
 App.HasWriteableConsole=True
 App.HasReadableConsole=True
 App.UDPLogger=False
-App.SupportsLiveSettingsChanges=False
+App.SupportsLiveSettingsChanges=True
 App.LiveSettingChangeCommandFormat=
 App.ForceIPBinding=False
 App.SupportsIPv6=True
@@ -92,7 +92,7 @@ App.TemplateMatchRegex={{(!?(?<Platform>Linux|Windows|All):)?(?<Value>\$?[\w]+)}
 Console.FilterMatchRegex=\e\[(\d+;)*(\d+)?[ABCDHJKfmsu]|\e\[?[?\>\=\da-z]+
 Console.FilterMatchReplacement=
 Console.ThrowawayMessageRegex=
-Console.AppReadyRegex=(?i)Web UI available at
+Console.AppReadyRegex=(?i)(Web UI available at|Extension host agent started)
 Console.UserJoinRegex=^$
 Console.UserLeaveRegex=^$
 Console.UserChatRegex=^$
