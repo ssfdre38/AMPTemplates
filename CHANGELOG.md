@@ -15,6 +15,19 @@ This repository contains **two** VS Code Server templates for AMP:
 
 ### **2025-01-10 - Latest Changes**
 
+#### **CRITICAL: Fix Microsoft VS Code Server Update Directory Conflicts** (Commit: 8c10cd8a)
+- **Issue**: Update failing with `mv: cannot move 'vscode-server-linux-x64/bin' to './bin': Directory not empty`
+- **Root Cause**: Attempting to move directories over existing ones from previous installation
+- **Log Evidence**: `mv` commands failing for `bin`, `extensions`, `node_modules`, `out` directories
+- **Solution**: 
+  - Added `rm -rf` to remove existing directories before `mv` command
+  - Clears: `bin extensions node_modules out package.json product.json node LICENSE`
+  - Then safely moves new files from extracted subdirectory
+  - Applied to all Microsoft VS Code Server platforms (Linux x64/ARM64, Windows x64)
+- **Result**: Updates now work cleanly without directory conflicts on subsequent runs
+- **Note**: Community code-server template unaffected (uses `--strip-components=1`)
+- **Files Changed**: `vscode-serverupdates.json`
+
 #### **CRITICAL: Fix Microsoft VS Code Server License Acceptance** (Commit: d1544e5c)
 - **Issue**: VS Code Server failing with exit code 1 and license error message
 - **Error Message**: `To accept the license terms, start the server with --accept-server-license-terms`
