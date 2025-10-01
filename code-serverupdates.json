@@ -35,6 +35,6 @@
         "UpdateStageName": "Make Server Executable",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "SetExecutableFlag",
-        "UpdateSourceArgs": "{{$FullBaseDir}}bin/code-server"
+        "UpdateSourceArgs": "{{$FullRootDir}}bin/code-server"
     }
 ]
