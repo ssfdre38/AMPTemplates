@@ -15,6 +15,20 @@ This repository contains **two** VS Code Server templates for AMP:
 
 ### **2025-01-10 - Latest Changes**
 
+#### **CRITICAL: Fix Microsoft VS Code Server License Acceptance** (Commit: d1544e5c)
+- **Issue**: VS Code Server failing with exit code 1 and license error message
+- **Error Message**: `To accept the license terms, start the server with --accept-server-license-terms`
+- **Root Cause**: Microsoft VS Code Server requires explicit license acceptance flag
+- **Log Analysis**: Update/chmod stages successful ✅, but server immediately exited ❌
+- **Solution**: 
+  - Added `--accept-server-license-terms` flag to Microsoft VS Code Server command line
+  - Simplified command line arguments by removing unused `AuthArgs`/`ConfigArgs`
+  - Added proper `--host` and `--port` binding for web interface access
+  - Set workspace argument default to `workspace` directory
+  - Community code-server uses `--bind-addr` format (different from Microsoft version)
+- **Result**: Both templates now have correct startup arguments and should start successfully
+- **Files Changed**: `vscode-server.kvp`, `code-server.kvp`, both config JSON files
+
 #### **CRITICAL: Fix Microsoft VS Code Server Directory Structure** (Commit: a5b5f1a9)
 - **Issue**: `chmod` failing with exit code 1 - `/AMP/vscode-server/bin/code-server` not found
 - **Root Cause**: Microsoft VS Code Server extracts to `vscode-server-linux-x64/` subdirectory, not root
