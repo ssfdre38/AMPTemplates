@@ -1,0 +1,9 @@
+[
+    {
+        "Protocol": "TCP",
+        "Port": 8443,
+        "Ref": "ServerPort", 
+        "Name": "Web Interface Port",
+        "Description": "Port for VS Code Server web interface"
+    }
+]

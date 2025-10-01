@@ -1,0 +1,80 @@
+[
+    {
+        "UpdateStageName": "Code Server Download",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSourceArch": "x86_64",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd code-server && CodeServerVersion='{{CodeServerVersion}}'; if [[ -z '$CodeServerVersion' ]]; then CodeServerVersion=$(wget -qO- https://api.github.com/repos/coder/code-server/releases/latest | grep 'tag_name' | cut -d'\\\"' -f4 | sed 's/v//'); fi; if [[ -x code-server ]] && [[ $(./code-server --version | head -n1 | awk '{print $1}') == '$CodeServerVersion' ]]; then echo 'Code Server $CodeServerVersion already installed. Skipping'; exit 0; fi; echo 'Downloading Code Server $CodeServerVersion for Linux x64'; wget -qO code-server.tar.gz https://github.com/coder/code-server/releases/download/v$CodeServerVersion/code-server-$CodeServerVersion-linux-amd64.tar.gz || { echo 'Download failed'; exit 1; }; tar -xzf code-server.tar.gz --strip-components=1 || { echo 'Extract failed'; exit 1; }; rm -f code-server.tar.gz; chmod +x code-server; echo 'Code Server $CodeServerVersion downloaded successfully'\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Code Server Download",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSourceArch": "aarch64",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd code-server && CodeServerVersion='{{CodeServerVersion}}'; if [[ -z '$CodeServerVersion' ]]; then CodeServerVersion=$(wget -qO- https://api.github.com/repos/coder/code-server/releases/latest | grep 'tag_name' | cut -d'\\\"' -f4 | sed 's/v//'); fi; if [[ -x code-server ]] && [[ $(./code-server --version | head -n1 | awk '{print $1}') == '$CodeServerVersion' ]]; then echo 'Code Server $CodeServerVersion already installed. Skipping'; exit 0; fi; echo 'Downloading Code Server $CodeServerVersion for Linux ARM64'; wget -qO code-server.tar.gz https://github.com/coder/code-server/releases/download/v$CodeServerVersion/code-server-$CodeServerVersion-linux-arm64.tar.gz || { echo 'Download failed'; exit 1; }; tar -xzf code-server.tar.gz --strip-components=1 || { echo 'Extract failed'; exit 1; }; rm -f code-server.tar.gz; chmod +x code-server; echo 'Code Server $CodeServerVersion downloaded successfully'\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Code Server Download",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "powershell.exe",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'code-server'; $CodeServerVersion='{{CodeServerVersion}}'; if ([string]::IsNullOrWhiteSpace($CodeServerVersion)) { $CodeServerVersion = (Invoke-RestMethod -UseBasicParsing -Uri 'https://api.github.com/repos/coder/code-server/releases/latest').tag_name -replace '^v', '' }; if ((Test-Path 'code-server.exe') -and ((& './code-server.exe' --version | Select-Object -First 1).Split(' ')[0] -eq $CodeServerVersion)) { Write-Output \\\"Code Server $CodeServerVersion already installed. Skipping\\\"; exit 0 }; Write-Output \\\"Downloading Code Server $CodeServerVersion for Windows\\\"; try { Invoke-WebRequest -UseBasicParsing -Uri \\\"https://github.com/coder/code-server/releases/download/v$CodeServerVersion/code-server-$CodeServerVersion-windows-amd64.zip\\\" -OutFile 'code-server.zip' -ErrorAction Stop } catch { Write-Output 'Download failed'; exit 1; }; try { Expand-Archive -Path 'code-server.zip' -DestinationPath '.' -Force; Remove-Item 'code-server.zip' -Force; Get-ChildItem -Directory | Where-Object { $_.Name -like 'code-server-*' } | ForEach-Object { Get-ChildItem $_.FullName | Move-Item -Destination '.' -Force; Remove-Item $_.FullName -Recurse -Force }; Write-Output \\\"Code Server $CodeServerVersion downloaded successfully\\\" } catch { Write-Output 'Extract failed'; exit 1; }\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Create Workspace Directory",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "{{Linux:/bin/bash}}{{Windows:powershell.exe}}",
+        "UpdateSourceArgs": "{{Linux:-c \"cd code-server && mkdir -p {{WorkspaceDir}} && echo 'Workspace directory created'\"}}{{Windows:-NoProfile -Command \"Set-Location -Path 'code-server'; New-Item -ItemType Directory -Path '{{WorkspaceDir}}' -Force | Out-Null; Write-Output 'Workspace directory created'\"}}",
+        "SkipOnFailure": true
+    },
+    {
+        "UpdateStageName": "Setup Authentication Arguments",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "SetSetting",
+        "UpdateSourceData": "AuthArgs",
+        "UpdateSourceArgs": "{{AuthType:none:}}{{AuthType:password:--auth=password}}{{AuthType:github:--auth=github --github-client-id={{GitHubClientID}} --github-client-secret={{GitHubClientSecret}}}}",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Setup Config Arguments",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "SetSetting",
+        "UpdateSourceData": "ConfigArgs",
+        "UpdateSourceArgs": "{{ConfigDir:--config={{ConfigDir}}}} {{UserDataDir:--user-data-dir={{UserDataDir}}}} {{ExtensionsDir:--extensions-dir={{ExtensionsDir}}}} {{DisableTelemetry:true:--disable-telemetry}}",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Setup Workspace Arguments",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "SetSetting",
+        "UpdateSourceData": "WorkspaceArgs",
+        "UpdateSourceArgs": "{{WorkspaceDir}}",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Set Password Environment Variable",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd code-server && echo 'PASSWORD={{Password}}' > .env\"",
+        "UpdateSourceConditionSetting": "AuthType",
+        "UpdateSourceConditionValue": "password",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Set Password Environment Variable",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "powershell.exe",
+        "UpdateSourceArgs": "-NoProfile -Command \"Set-Location -Path 'code-server'; 'PASSWORD={{Password}}' | Out-File -FilePath '.env' -Encoding UTF8\"",
+        "UpdateSourceConditionSetting": "AuthType",
+        "UpdateSourceConditionValue": "password",
+        "SkipOnFailure": false
+    }
+]
