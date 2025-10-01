@@ -35,7 +35,7 @@ App.ExecutableLinux=bin/code-server
 App.WorkingDir=
 App.LinuxCommandLineArgs=
 App.WindowsCommandLineArgs=
-App.CommandLineArgs={{AuthArgs}} {{ConfigArgs}} {{WorkspaceArgs}} {{AdditionalArgs}}
+App.CommandLineArgs=--bind-addr={{$ApplicationIPBinding}}:{{$ServerPort}} {{WorkspaceArgs}} {{AdditionalArgs}}
 App.UseLinuxIOREDIR=False
 App.AppSettings={}
 App.EnvironmentVariables={"PASSWORD":"{{Password}}"}

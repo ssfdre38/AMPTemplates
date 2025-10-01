@@ -205,7 +205,7 @@
         "IsFlagArgument": false,
         "ParamFieldName": "WorkspaceArgs",
         "IncludeInCommandLine": false,
-        "DefaultValue": "",
+        "DefaultValue": "workspace",
         "EnumValues": {}
     }
 ]

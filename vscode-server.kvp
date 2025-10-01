@@ -35,7 +35,7 @@ App.ExecutableLinux=bin/code-server
 App.WorkingDir=
 App.LinuxCommandLineArgs=
 App.WindowsCommandLineArgs=
-App.CommandLineArgs={{AuthArgs}} {{ConfigArgs}} {{WorkspaceArgs}} {{AdditionalArgs}}
+App.CommandLineArgs=--accept-server-license-terms --host={{$ApplicationIPBinding}} --port={{$ServerPort}} {{WorkspaceArgs}} {{AdditionalArgs}}
 App.UseLinuxIOREDIR=False
 App.AppSettings={}
 App.EnvironmentVariables={"VSCODE_AGENT_FOLDER":"{{$FullBaseDir}}"}
