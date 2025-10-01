@@ -1,7 +1,7 @@
 [
     {
         "Protocol": "TCP",
-        "Port": 8444,
+        "Port": 8443,
         "Ref": "ServerPort", 
         "Name": "Web Interface Port",
         "Description": "Port for Microsoft VS Code Server web interface"

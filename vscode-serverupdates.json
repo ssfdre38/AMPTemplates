@@ -6,51 +6,29 @@
         "UpdateSourceArgs": "{{$FullBaseDir}}workspace"
     },
     {
-        "UpdateStageName": "Clean VS Code Server Directory",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd vscode-server && echo 'Cleaning old VS Code Server files...'; rm -rf bin extensions node_modules out package.json product.json node LICENSE vscode-server-linux-* 2>/dev/null || true; echo 'Directory cleaned'\"",
-        "SkipOnFailure": true
-    },
-    {
-        "UpdateStageName": "VS Code Server Download",
+        "UpdateStageName": "VS Code Server Download and Setup",
         "UpdateSourcePlatform": "Linux",
         "UpdateSourceArch": "x86_64",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd vscode-server && echo 'Downloading Microsoft VS Code Server for Linux x64'; wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-x64/stable' || { echo 'Download failed'; exit 1; }; echo 'Extracting VS Code Server...'; tar -xzf vscode-server.tar.gz && rm -f vscode-server.tar.gz && echo 'Moving files...'; find . -maxdepth 1 -type d -name 'vscode-server-linux-*' -exec sh -c 'mv \"$1\"/* . && rmdir \"$1\"' _ {} \\; && echo 'Microsoft VS Code Server downloaded and extracted'\"",
+        "UpdateSourceArgs": "-c \"cd vscode-server && echo 'Setting up Microsoft VS Code Server for Linux x64' && rm -f vscode-server.tar.gz 2>/dev/null || true && wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-x64/stable' && if [ $? -eq 0 ]; then echo 'Download successful, extracting...'; tar -xzf vscode-server.tar.gz && rm -f vscode-server.tar.gz && if [ -d vscode-server-linux-x64 ]; then echo 'Moving VS Code Server files to root directory...'; cp -f vscode-server-linux-x64/bin/code-server . && chmod +x code-server && rm -rf vscode-server-linux-x64 && echo 'Microsoft VS Code Server setup complete'; else echo 'Extraction failed - no expected directory found'; exit 1; fi; else echo 'Download failed'; exit 1; fi\"",
         "SkipOnFailure": false
     },
     {
-        "UpdateStageName": "VS Code Server Download",
+        "UpdateStageName": "VS Code Server Download and Setup",
         "UpdateSourcePlatform": "Linux",
         "UpdateSourceArch": "aarch64",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd vscode-server && echo 'Downloading Microsoft VS Code Server for Linux ARM64'; wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-arm64/stable' || { echo 'Download failed'; exit 1; }; echo 'Extracting VS Code Server...'; tar -xzf vscode-server.tar.gz && rm -f vscode-server.tar.gz && echo 'Moving files...'; find . -maxdepth 1 -type d -name 'vscode-server-linux-*' -exec sh -c 'mv \"$1\"/* . && rmdir \"$1\"' _ {} \\; && echo 'Microsoft VS Code Server downloaded and extracted'\"",
+        "UpdateSourceArgs": "-c \"cd vscode-server && echo 'Setting up Microsoft VS Code Server for Linux ARM64' && rm -f vscode-server.tar.gz 2>/dev/null || true && wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-arm64/stable' && if [ $? -eq 0 ]; then echo 'Download successful, extracting...'; tar -xzf vscode-server.tar.gz && rm -f vscode-server.tar.gz && if [ -d vscode-server-linux-arm64 ]; then echo 'Moving VS Code Server files to root directory...'; cp -f vscode-server-linux-arm64/bin/code-server . && chmod +x code-server && rm -rf vscode-server-linux-arm64 && echo 'Microsoft VS Code Server setup complete'; else echo 'Extraction failed - no expected directory found'; exit 1; fi; else echo 'Download failed'; exit 1; fi\"",
         "SkipOnFailure": false
     },
     {
-        "UpdateStageName": "Clean VS Code Server Directory",
+        "UpdateStageName": "VS Code Server Download and Setup",
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"Set-Location -Path 'vscode-server'; Write-Output 'Cleaning old VS Code Server files...'; Remove-Item -Path @('bin','extensions','node_modules','out','package.json','product.json','node.exe','LICENSE') -Recurse -Force -ErrorAction SilentlyContinue; Get-ChildItem -Directory | Where-Object { $_.Name -like 'vscode-server-win32-*' } | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue; Write-Output 'Directory cleaned'\"",
-        "SkipOnFailure": true
-    },
-    {
-        "UpdateStageName": "VS Code Server Download",
-        "UpdateSourcePlatform": "Windows",
-        "UpdateSource": "Executable",
-        "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'vscode-server'; Write-Output 'Downloading Microsoft VS Code Server for Windows'; try { Invoke-WebRequest -UseBasicParsing -Uri 'https://update.code.visualstudio.com/latest/server-win32-x64/stable' -OutFile 'vscode-server.zip' -ErrorAction Stop; Write-Output 'Extracting VS Code Server...'; Expand-Archive -Path 'vscode-server.zip' -DestinationPath '.' -Force; Remove-Item 'vscode-server.zip' -Force; Get-ChildItem -Directory | Where-Object { $_.Name -like 'vscode-server-win32-*' } | ForEach-Object { Get-ChildItem $_.FullName | Move-Item -Destination '.' -Force; Remove-Item $_.FullName -Recurse -Force }; Write-Output 'Microsoft VS Code Server downloaded and extracted' } catch { Write-Output 'Download/extract failed'; exit 1; }\"",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'vscode-server'; Write-Output 'Setting up Microsoft VS Code Server for Windows'; Remove-Item 'vscode-server.zip' -Force -ErrorAction SilentlyContinue; try { Invoke-WebRequest -UseBasicParsing -Uri 'https://update.code.visualstudio.com/latest/server-win32-x64/stable' -OutFile 'vscode-server.zip' -ErrorAction Stop; Write-Output 'Download successful, extracting...'; Expand-Archive -Path 'vscode-server.zip' -DestinationPath 'temp' -Force; Remove-Item 'vscode-server.zip' -Force; $extractedDir = Get-ChildItem -Path 'temp' -Directory | Where-Object { $_.Name -like 'vscode-server-win32-*' } | Select-Object -First 1; if ($extractedDir) { Write-Output 'Moving VS Code Server files to root directory...'; Copy-Item (Join-Path $extractedDir.FullName 'bin\\code-server.exe') '.' -Force; Remove-Item 'temp' -Recurse -Force; Write-Output 'Microsoft VS Code Server setup complete' } else { Write-Output 'Extraction failed - no expected directory found'; exit 1 } } catch { Write-Output 'Download/extract failed'; exit 1; }\"",
         "SkipOnFailure": false
-    },
-    {
-        "UpdateStageName": "Make Server Executable",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "SetExecutableFlag",
-        "UpdateSourceArgs": "{{$FullBaseDir}}bin/code-server"
     }
 ]
