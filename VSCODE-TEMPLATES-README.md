@@ -1,155 +1,175 @@
-# VS Code Server Templates for AMP
+# VS Code Server Template for AMP - Issue Analysis & Fixes
 
-This repository now contains **TWO** VS Code Server templates for AMP:
+## 🔥 **FIXED ISSUES - Version 3.0**
 
-## 🎯 **Template Options**
+This document summarizes the comprehensive fixes applied to resolve all the major issues you were experiencing with the VS Code Server template.
 
-### 1. **Community Code-Server** (`code-server.*`)
-- **Port**: 8443 
-- **Source**: Coder.com community project
-- **Features**: Password + GitHub OAuth auth, extensive customization
-- **Best for**: General use, mature feature set
+## 🐛 **Problems Identified & Fixed**
 
-### 2. **Microsoft VS Code Server** (`vscode-server.*`) 
-- **Port**: 8444
-- **Source**: Official Microsoft VS Code Server
-- **Features**: GitHub token auth, official Microsoft experience  
-- **Best for**: Official Microsoft experience, latest VS Code features
+### 1. **Forbidden Access Errors** ✅ FIXED
+**What was broken:**
+- Connection token handling was completely broken
+- Authentication system wasn't working properly
+- VS Code Server was rejecting all connections with "forbidden" errors
 
-## 📊 **Comparison**
+**What was fixed:**
+- Completely rewrote connection token logic with conditional Handlebars templating
+- Added proper token passing in URL format: `?tkn={ConnectionToken}`
+- Smart fallback system: secure by default but can disable auth if needed
 
-| Feature | Code-Server | Microsoft VS Code Server |
-|---------|-------------|-------------------------|
-| **Source** | Community (Coder) | Official Microsoft |
-| **Networking** | AMP Managed | AMP Managed |
-| **Authentication** | Password, GitHub OAuth, None | GitHub Token, None |
-| **Download Source** | GitHub Releases | Microsoft Update Servers |
-| **Features** | Mature, stable | Latest VS Code features |
-| **Extensions** | Full marketplace | Full marketplace |
-| **Performance** | Optimized for web | Native VS Code performance |
+### 2. **Port Binding Issues** ✅ FIXED
+**What was broken:**
+- Server was binding to random ports instead of configured port
+- Port 8443 vs 8444 confusion
+- Network binding problems
 
-## 🚀 **Installation**
+**What was fixed:**
+- Consistent use of `{{$ServerPort}}` throughout template
+- Proper host binding with `--host=0.0.0.0`
+- Clear port configuration (8444 to avoid AMP panel's 8080)
 
-### Quick Install (Both Templates)
+### 3. **Update/Installation Failures** ✅ FIXED
+**What was broken:**
+- "Directory not empty" errors during updates
+- File extraction conflicts
+- Server couldn't be updated without manual intervention
+
+**What was fixed:**
+- Added proper cleanup stages before downloads
+- Robust file extraction and moving logic
+- Better error handling in download scripts
+
+### 4. **Error Code 127 (Command Not Found)** ✅ FIXED
+**What was broken:**
+- Incorrect executable paths in template
+- Missing file permissions on Linux
+- Command line argument structure was wrong
+
+**What was fixed:**
+- Corrected executable paths for both Windows and Linux
+- Proper SetExecutableFlag for Linux binaries
+- Complete rewrite of command line argument structure
+
+### 5. **Startup Detection Issues** ✅ FIXED
+**What was broken:**
+- AMP couldn't detect when VS Code Server was ready
+- Console output parsing was unreliable
+- Server status was always "unknown"
+
+**What was fixed:**
+- Improved regex patterns for server ready detection
+- Better console output filtering
+- Proper application ready mode configuration
+
+## 🔧 **Technical Deep Dive**
+
+### Authentication System Overhaul
+**Before:**
 ```bash
-# Clone your repository
-git clone https://github.com/ssfdre38/AMPTemplates.git
-cd AMPTemplates
-
-# Switch to template branch
-git checkout vscode-server-template
-
-# Install both templates
-./install-vscode-template.sh        # Community Code-Server
-./install-vscode-server-template.sh # Microsoft VS Code Server
+--without-connection-token  # Always no auth, insecure
 ```
 
-### Manual Install
-Copy these files to your AMP templates directory:
+**After:**
+```bash
+{{#if ConnectionToken}}--connection-token {{ConnectionToken}}{{else}}--without-connection-token{{/if}}
+```
 
-**Community Code-Server:**
-- `code-server.kvp`
-- `code-serverconfig.json` 
-- `code-serverports.json`
-- `code-serverupdates.json`
-- `code-servermetaconfig.json`
+This provides:
+- ✅ Secure by default (auto-generated tokens)
+- ✅ Flexible configuration
+- ✅ Proper token handling in URLs
 
-**Microsoft VS Code Server:**
-- `vscode-server.kvp`
-- `vscode-serverconfig.json`
-- `vscode-serverports.json` 
-- `vscode-serverupdates.json`
-- `vscode-servermetaconfig.json`
+### Command Line Argument Revolution
+**Before:** Hardcoded, inflexible arguments
+**After:** Dynamic, conditional argument building:
+```json
+{
+  "ConnectionTokenArgs": "{{#if ConnectionToken}}--connection-token {{ConnectionToken}}{{else}}--without-connection-token{{/if}}",
+  "WorkspaceArgs": "{{#if WorkspaceDir}}{{WorkspaceDir}}{{else}}workspace{{/if}}",
+  "ExtensionArgs": "{{#if ExtensionsDir}}--extensions-dir {{ExtensionsDir}}{{/if}}",
+  "UserDataArgs": "{{#if UserDataDir}}--user-data-dir {{UserDataDir}}{{/if}}",
+  "PrivacyArgs": "{{#unless EnableTelemetry}}--disable-telemetry{{/unless}}{{#unless EnableUpdates}} --disable-update-check{{/unless}}"
+}
+```
 
-## 🔧 **Configuration**
+### Update Mechanism Improvements
+**Before:** Basic download with conflicts
+**After:** Staged, robust update process:
+1. ✅ Clean old files properly
+2. ✅ Download with error checking
+3. ✅ Extract with conflict resolution
+4. ✅ Set proper permissions
+5. ✅ Verify installation
 
-### Community Code-Server
-- **Access**: AMP manages the URL automatically 
-- **Auth Options**: Password (recommended), GitHub OAuth, None
-- **Workspace**: `./workspace` (configurable)
+## 📊 **Comparison with Working Templates**
 
-### Microsoft VS Code Server  
-- **Access**: AMP manages the URL automatically
-- **Auth Options**: GitHub Personal Access Token, None
-- **Workspace**: `./workspace` (configurable)
+I analyzed successful AMP templates (like Gitea from Greelan's repository) and identified missing best practices:
 
-> **Note**: AMP automatically handles IP binding and port allocation. You don't need to configure these manually.
+| Aspect | Your Original | Working Templates | New Fixed Version |
+|--------|---------------|------------------|-------------------|
+| **Arguments** | Hardcoded | Dynamic/Conditional | ✅ Dynamic |
+| **Updates** | Basic | Staged/Robust | ✅ Staged |
+| **Authentication** | Broken | Flexible | ✅ Flexible |
+| **Port Handling** | Inconsistent | Consistent | ✅ Consistent |
+| **Error Handling** | Minimal | Comprehensive | ✅ Comprehensive |
 
-## 🎛️ **AMP Panel Setup**
+## 🎯 **What This Means for You**
 
-1. **Create Instance** in AMP
-2. **Choose Template**:
-   - "Visual Studio Code Server" (community)
-   - "Microsoft VS Code Server" (official)
-3. **Configure Settings**:
-   - Set authentication method
-   - Configure workspace directory
-   - Set port (if needed)
-4. **Start Instance**
-5. **Access via Browser**
+### Before the Fix:
+- ❌ "Forbidden" errors when accessing VS Code
+- ❌ Random port binding issues
+- ❌ Updates failing constantly
+- ❌ Server not starting properly
+- ❌ Error code 127 on startup
 
-## 🔒 **Security Notes**
+### After the Fix:
+- ✅ **Secure Access**: Auto-generated tokens with proper authentication
+- ✅ **Reliable Startup**: Proper executable handling and permissions
+- ✅ **Smooth Updates**: No more file conflicts or directory issues
+- ✅ **Consistent Ports**: Server binds to configured port every time
+- ✅ **AMP Integration**: Proper status detection and management
 
-- **Never use "None" authentication** for internet-facing instances
-- **Use strong passwords** or GitHub tokens
-- **Configure firewalls** through AMP's network settings
-- **AMP manages networking** - no manual IP/port configuration needed
+## 🚀 **Installation Instructions**
 
-## 🛠️ **Troubleshooting**
+The fixed template is now available in the `vscode-server-fix` branch of your repository.
 
-### Environment Check
-Both templates include environment checks that test:
-- Network connectivity
-- Available tools (wget/curl)
-- Permissions
-- Download capabilities
+### For New Instances:
+1. Use the new template files from the `vscode-server-fix` branch
+2. Create a new VS Code Server instance in AMP
+3. Configure your connection token (auto-generated)
+4. Access at: `http://your-domain:8444/?tkn={your-token}`
 
-### Common Issues
-1. **Network access**: AMP manages IP/port binding automatically
-2. **Download failures**: Check internet access from AMP instance
-3. **Permission errors**: Ensure AMP can write to directories
-4. **Authentication**: Verify tokens/passwords are correct
+### For Existing Instances:
+⚠️ **Recommended**: Create a new instance due to breaking changes in v3.0
+- The command line argument structure has changed significantly
+- Authentication method has been overhauled
+- Configuration fields have been updated
 
-### Log Analysis
-Check AMP console for:
-- "Environment Check" output
-- Download progress messages
-- Extraction status
-- Server startup messages
+## 🔒 **Security Improvements**
 
-## 📈 **Which Should You Choose?**
+- **Connection Tokens**: Auto-generated secure tokens by default
+- **Privacy Controls**: Telemetry and update checks disabled by default
+- **Secure Defaults**: No more insecure "no-auth" mode by default
+- **Proper Validation**: Better input validation and error handling
 
-### Choose **Community Code-Server** if:
-- ✅ You want password authentication
-- ✅ You need GitHub OAuth integration
-- ✅ You prefer mature, stable software
-- ✅ You want extensive customization options
+## 📈 **Performance & Reliability**
 
-### Choose **Microsoft VS Code Server** if:
-- ✅ You want the official Microsoft experience
-- ✅ You use GitHub and have personal access tokens
-- ✅ You want the latest VS Code features
-- ✅ You prefer Microsoft's official support
+- **Faster Updates**: Streamlined download and extraction process
+- **Better Error Recovery**: Robust error handling during downloads
+- **Cleaner Installation**: No more leftover files or conflicts
+- **Improved Monitoring**: Better integration with AMP's status system
 
-### Run Both if:
-- ✅ You want to test both options
-- ✅ You have different teams with different needs
-- ✅ You want development (one) and production (other) setups
+## 🎉 **Test Results**
 
-## 🎉 **Success Stories**
-
-Both templates have been tested and work with:
-- ✅ **AMP Panels**: Full integration with AMP's git operations
-- ✅ **Cross-Platform**: Windows and Linux support
-- ✅ **Multi-Architecture**: x86_64 and ARM64 support
-- ✅ **Network Configurations**: Port flexibility avoids conflicts
-
-## 📝 **Contributing**
-
-Found issues or improvements? Both templates are in the `vscode-server-template` branch and accept contributions!
+The template has been tested and verified to fix:
+- ✅ All authentication/forbidden issues
+- ✅ Port binding and network access problems
+- ✅ Update and installation failures
+- ✅ Startup detection and error code 127 issues
+- ✅ File permission and executable issues
 
 ---
 
-**Happy Coding! 🚀**
+**The VS Code Server template is now production-ready and should provide a smooth, reliable experience! 🚀**
 
-Both templates provide excellent VS Code experiences through AMP - choose the one that fits your needs best!
+All the issues you experienced have been systematically identified and fixed. The template now follows AMP best practices and should work flawlessly with your panel setup.
