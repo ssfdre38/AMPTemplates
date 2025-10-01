@@ -1,5 +1,39 @@
 # VS Code Server Template Changelog
 
+## Version 3.0 - 2024-12-19
+
+### Major Fixes & Improvements
+- ✅ **Authentication Issues**: Fixed connection token handling that was causing "forbidden" errors
+- ✅ **Port Binding**: Fixed port configuration to properly bind to the configured port
+- ✅ **Update Mechanism**: Improved file extraction and handling during updates to prevent conflicts
+- ✅ **Command Line Arguments**: Complete rewrite of argument structure for better compatibility
+- ✅ **File Permissions**: Fixed executable permissions for the code-server binary on Linux
+
+### Technical Improvements
+1. **Smart Authentication**: Conditional connection token support (can be enabled or disabled)
+2. **Better Configuration**: Proper handling of optional directories (extensions, user data)
+3. **Cleaner Updates**: Improved file cleanup and extraction process
+4. **Template Compliance**: Aligned with AMP template best practices from working templates
+
+### Key Configuration Changes
+- **Connection Tokens**: Now properly handled with conditional logic
+- **Argument Building**: Uses Handlebars templating for dynamic argument construction
+- **Port Handling**: Consistent use of {{$ServerPort}} throughout template
+- **Directory Management**: Better handling of workspace, extensions, and user data directories
+
+### Issues Resolved
+- ❌ "Forbidden" errors when accessing web interface
+- ❌ Server binding to wrong ports or failing to bind
+- ❌ Update failures due to file extraction conflicts
+- ❌ Error code 127 startup failures
+- ❌ License acceptance prompts blocking startup
+
+### Breaking Changes
+⚠️ **Important**: Existing instances may need to be updated/recreated due to:
+- Changed command line argument structure
+- Updated authentication method
+- Modified configuration field names
+
 ## Version 2.0 - Fixed Release
 
 ### Fixed Issues:

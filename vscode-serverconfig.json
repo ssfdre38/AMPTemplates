@@ -3,7 +3,7 @@
         "DisplayName": "Connection Token",
         "Category": "VS Code Server:server",
         "Subcategory": "Security:shield:1",
-        "Description": "Connection token for accessing VS Code Server. Leave empty for no authentication (not recommended)",
+        "Description": "Connection token for accessing VS Code Server. Leave empty to disable authentication (not recommended for public servers)",
         "Keywords": "token,security,connection,authentication",
         "FieldName": "ConnectionToken",
         "InputType": "RandomPassword",
@@ -123,6 +123,20 @@
         }
     },
     {
+        "DisplayName": "Connection Token Arguments",
+        "Category": "VS Code Server:server",
+        "Subcategory": "Hidden",
+        "Description": "Internal field for connection token arguments",
+        "Keywords": "",
+        "FieldName": "ConnectionTokenArgs",
+        "InputType": "hidden",
+        "IsFlagArgument": false,
+        "ParamFieldName": "ConnectionTokenArgs",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "{{#if ConnectionToken}}--connection-token {{ConnectionToken}}{{else}}--without-connection-token{{/if}}",
+        "EnumValues": {}
+    },
+    {
         "DisplayName": "Workspace Arguments",
         "Category": "VS Code Server:server",
         "Subcategory": "Hidden",
@@ -133,7 +147,7 @@
         "IsFlagArgument": false,
         "ParamFieldName": "WorkspaceArgs",
         "IncludeInCommandLine": false,
-        "DefaultValue": "workspace",
+        "DefaultValue": "{{#if WorkspaceDir}}{{WorkspaceDir}}{{else}}workspace{{/if}}",
         "EnumValues": {}
     },
     {
@@ -147,7 +161,7 @@
         "IsFlagArgument": false,
         "ParamFieldName": "ExtensionArgs",
         "IncludeInCommandLine": false,
-        "DefaultValue": "",
+        "DefaultValue": "{{#if ExtensionsDir}}--extensions-dir {{ExtensionsDir}}{{/if}}",
         "EnumValues": {}
     },
     {
@@ -161,7 +175,7 @@
         "IsFlagArgument": false,
         "ParamFieldName": "UserDataArgs",
         "IncludeInCommandLine": false,
-        "DefaultValue": "",
+        "DefaultValue": "{{#if UserDataDir}}--user-data-dir {{UserDataDir}}{{/if}}",
         "EnumValues": {}
     },
     {
@@ -175,7 +189,7 @@
         "IsFlagArgument": false,
         "ParamFieldName": "PrivacyArgs",
         "IncludeInCommandLine": false,
-        "DefaultValue": "",
+        "DefaultValue": "{{#unless EnableTelemetry}}--disable-telemetry{{/unless}}{{#unless EnableUpdates}} --disable-update-check{{/unless}}",
         "EnumValues": {}
     }
 ]
