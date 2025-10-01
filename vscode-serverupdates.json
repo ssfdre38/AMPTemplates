@@ -11,7 +11,7 @@
         "UpdateSourceArch": "x86_64",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd vscode-server && echo 'Downloading Microsoft VS Code Server for Linux x64'; wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-x64/stable' || { echo 'Download failed'; exit 1; }; tar -xzf vscode-server.tar.gz && rm -f vscode-server.tar.gz && mv vscode-server-linux-x64/* . && rmdir vscode-server-linux-x64 && echo 'Microsoft VS Code Server downloaded'\"",
+        "UpdateSourceArgs": "-c \"cd vscode-server && echo 'Downloading Microsoft VS Code Server for Linux x64'; wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-x64/stable' || { echo 'Download failed'; exit 1; }; tar -xzf vscode-server.tar.gz && rm -f vscode-server.tar.gz && rm -rf bin extensions node_modules out package.json product.json node LICENSE && mv vscode-server-linux-x64/* . && rmdir vscode-server-linux-x64 && echo 'Microsoft VS Code Server downloaded'\"",
         "SkipOnFailure": false
     },
     {
@@ -20,7 +20,7 @@
         "UpdateSourceArch": "aarch64",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd vscode-server && echo 'Downloading Microsoft VS Code Server for Linux ARM64'; wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-arm64/stable' || { echo 'Download failed'; exit 1; }; tar -xzf vscode-server.tar.gz && rm -f vscode-server.tar.gz && mv vscode-server-linux-arm64/* . && rmdir vscode-server-linux-arm64 && echo 'Microsoft VS Code Server downloaded'\"",
+        "UpdateSourceArgs": "-c \"cd vscode-server && echo 'Downloading Microsoft VS Code Server for Linux ARM64'; wget -qO vscode-server.tar.gz 'https://update.code.visualstudio.com/latest/server-linux-arm64/stable' || { echo 'Download failed'; exit 1; }; tar -xzf vscode-server.tar.gz && rm -f vscode-server.tar.gz && rm -rf bin extensions node_modules out package.json product.json node LICENSE && mv vscode-server-linux-arm64/* . && rmdir vscode-server-linux-arm64 && echo 'Microsoft VS Code Server downloaded'\"",
         "SkipOnFailure": false
     },
     {
@@ -28,7 +28,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "powershell.exe",
-        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'vscode-server'; Write-Output 'Downloading Microsoft VS Code Server for Windows'; try { Invoke-WebRequest -UseBasicParsing -Uri 'https://update.code.visualstudio.com/latest/server-win32-x64/stable' -OutFile 'vscode-server.zip' -ErrorAction Stop; Expand-Archive -Path 'vscode-server.zip' -DestinationPath '.' -Force; Remove-Item 'vscode-server.zip' -Force; Get-ChildItem -Directory | Where-Object { $_.Name -like 'vscode-server-win32-*' } | ForEach-Object { Get-ChildItem $_.FullName | Move-Item -Destination '.' -Force; Remove-Item $_.FullName -Recurse -Force }; Write-Output 'Microsoft VS Code Server downloaded' } catch { Write-Output 'Download/extract failed'; exit 1; }\"",
+        "UpdateSourceArgs": "-NoProfile -Command \"$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Set-Location -Path 'vscode-server'; Write-Output 'Downloading Microsoft VS Code Server for Windows'; try { Invoke-WebRequest -UseBasicParsing -Uri 'https://update.code.visualstudio.com/latest/server-win32-x64/stable' -OutFile 'vscode-server.zip' -ErrorAction Stop; Expand-Archive -Path 'vscode-server.zip' -DestinationPath '.' -Force; Remove-Item 'vscode-server.zip' -Force; Remove-Item -Path @('bin','extensions','node_modules','out','package.json','product.json','node.exe','LICENSE') -Recurse -Force -ErrorAction SilentlyContinue; Get-ChildItem -Directory | Where-Object { $_.Name -like 'vscode-server-win32-*' } | ForEach-Object { Get-ChildItem $_.FullName | Move-Item -Destination '.' -Force; Remove-Item $_.FullName -Recurse -Force }; Write-Output 'Microsoft VS Code Server downloaded' } catch { Write-Output 'Download/extract failed'; exit 1; }\"",
         "SkipOnFailure": false
     },
     {
