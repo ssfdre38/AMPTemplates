@@ -21,7 +21,7 @@ This repository now contains **TWO** VS Code Server templates for AMP:
 | Feature | Code-Server | Microsoft VS Code Server |
 |---------|-------------|-------------------------|
 | **Source** | Community (Coder) | Official Microsoft |
-| **Port** | 8443 | 8444 |
+| **Networking** | AMP Managed | AMP Managed |
 | **Authentication** | Password, GitHub OAuth, None | GitHub Token, None |
 | **Download Source** | GitHub Releases | Microsoft Update Servers |
 | **Features** | Mature, stable | Latest VS Code features |
@@ -63,15 +63,17 @@ Copy these files to your AMP templates directory:
 
 ## 🔧 **Configuration**
 
-### Community Code-Server (Port 8443)
-- **Access**: `http://your-server:8443`
+### Community Code-Server
+- **Access**: AMP manages the URL automatically 
 - **Auth Options**: Password (recommended), GitHub OAuth, None
 - **Workspace**: `./workspace` (configurable)
 
-### Microsoft VS Code Server (Port 8444)
-- **Access**: `http://your-server:8444`
+### Microsoft VS Code Server  
+- **Access**: AMP manages the URL automatically
 - **Auth Options**: GitHub Personal Access Token, None
 - **Workspace**: `./workspace` (configurable)
+
+> **Note**: AMP automatically handles IP binding and port allocation. You don't need to configure these manually.
 
 ## 🎛️ **AMP Panel Setup**
 
@@ -90,8 +92,8 @@ Copy these files to your AMP templates directory:
 
 - **Never use "None" authentication** for internet-facing instances
 - **Use strong passwords** or GitHub tokens
-- **Configure firewalls** to restrict access as needed
-- **Different ports** allow running both simultaneously
+- **Configure firewalls** through AMP's network settings
+- **AMP manages networking** - no manual IP/port configuration needed
 
 ## 🛠️ **Troubleshooting**
 
@@ -103,7 +105,7 @@ Both templates include environment checks that test:
 - Download capabilities
 
 ### Common Issues
-1. **Port conflicts**: Use different ports (8443 vs 8444)
+1. **Network access**: AMP manages IP/port binding automatically
 2. **Download failures**: Check internet access from AMP instance
 3. **Permission errors**: Ensure AMP can write to directories
 4. **Authentication**: Verify tokens/passwords are correct
